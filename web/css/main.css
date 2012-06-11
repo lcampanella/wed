@@ -1,0 +1,159 @@
+body{ 
+	background:#f8f8f8;
+	font:13px Trebuchet MS, Arial, Helvetica, Sans-Serif;
+	color:#333;
+	line-height:160%;
+	margin:0;
+	padding:0;
+	text-align:center;
+	}
+
+h1{
+	font-size:200%;
+	font-weight:normal;
+	}		
+h2, h3, h4, h5, h6{
+	font-weight:normal;
+	margin:1em 0;
+	}	
+h2{            
+	font-size:160%;
+	}	
+h3{          
+	font-size:140%;
+	}
+h4{          
+	font-size:120%;
+	}				
+
+a{
+	text-decoration:none;
+	color:#f30;
+	}
+a:hover{
+	color:#999;
+	}			
+table, input, textarea, select, li{
+	font:100% Trebuchet MS, Arial, Helvetica, Sans-Serif;
+	line-height:160%;
+	color:#333;
+	}				
+p, blockquote, ol, form{
+	margin:1em 0;
+	}
+blockquote{
+	}
+img{
+    border:none;
+}			
+hr{
+    display:none;
+}	
+table{
+    margin:1em 0;
+    width:100%;
+    border-collapse:collapse;
+}
+th, td{	
+    padding:2px 5px;
+}	
+th{	
+    text-align:left;
+}
+ul {
+    list-style: none;
+}
+li{
+    display:list-item;
+}	
+	
+#container{	
+    margin:0 auto;
+    background:#fff;
+    width:600px;
+    height: 300px;
+    padding:20px 40px;
+    text-align:left;
+}
+
+#container div.edit-guest-form{
+    margin: 0 auto;
+}
+
+/* form 2 - Edit guest */
+
+#form2{
+    margin:1em 0;
+    color:#fff;
+    width:520px; /* customize width, this form have fluid layout */
+    }
+#form2 h3{
+    margin:0;
+    background:#57a700 url(../images/form2/form_heading.gif) repeat-x;		
+    color:#fff;
+    font-size:20px;
+    border:1px solid #57a700;
+    border-bottom:none;
+    }		
+#form2 h3 span{
+    display:block;
+    padding:10px 20px;
+    background:url(../images/form2/form_ico.gif) no-repeat 93% 50%;			
+    }				
+#form2 fieldset{
+    margin:0;
+    padding:0;
+    border:none;	
+    border-top:3px solid #000;
+    background:#000 url(../images/form2/form_top.gif) repeat-x;		
+    padding-bottom:1em;
+    }		
+#form2 legend{display:none;}	
+#form2 p{margin:.5em 20px;}	
+#form2 label{display:block;}	
+#form2 input, #form2 textarea{		
+    width:272px;
+    border:1px solid #111;
+    background:#282828 url(../images/form2/form_input.gif) repeat-x;
+    padding:2px 3px;
+    color:#fff;
+    }
+#form2 textarea{
+    height:125px;
+    overflow:auto;
+    }					
+#form2 p.submit{
+    text-align:right;
+    }	
+#form2 p.first{
+    border-bottom: 1px solid #ffffff;
+}
+#form2 p.first span{
+    display: block;
+}
+#form2 p.first span img{
+    float: right;
+}
+#form2 button{
+    padding:0 20px;
+    height:32px;
+    line-height:32px;		
+    border:1px solid #70ad2e;
+    background:#5aae00 url(../images/form2/form_button.gif) repeat-x;
+    color:#fff;
+    cursor:pointer;		
+    text-align:center;		
+}
+#form2 ul{
+    padding: 5px 20px;
+    margin: 0px;
+    background:#000000;
+}
+#form2 ul li{
+    color: #ffffff;
+}
+#form2 ul li.add-guest img{
+    cursor: pointer;
+}
+
+/* // form 2 */

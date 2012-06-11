@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <li>
+            <a href="{{ path('_security_logout') }}">
+                Logout
+            </a>
+        </li>
+    {% endif %}
+    <h1>Wedding Application</h1>
+
+    {% block content %}{% endblock %}
+{% endblock %}

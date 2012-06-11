@@ -1,0 +1,25 @@
+_security_login:
+    pattern:  /login
+    defaults: { _controller: WedWeddingBundle:Security:login }
+
+_security_check:
+    pattern:  /login_check
+
+_security_logout:
+    pattern:  /logout
+
+admin_home:
+    pattern:  /admin/
+    defaults: { _controller: WedWeddingBundle:Admin:index }
+    
+admin_edit_guest:
+    pattern:  /edit/guest/
+    defaults: { _controller: WedWeddingBundle:Admin:editGuest }
+
+homepage:
+    pattern:  /
+    defaults: { _controller: WedWeddingBundle:Wedding:welcome }
+
+Wedding:
+    pattern:  /Wedding
+    defaults: { _controller: WedWeddingBundle:Wedding:index }
