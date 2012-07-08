@@ -6,7 +6,7 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
 use Doctrine\ORM\Mapping as ORM;
  
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Wed\WeddingBundle\Entity\RoleRepository")
  * @ORM\Table(name="role")
  */
 class Role implements RoleInterface
@@ -90,5 +90,15 @@ class Role implements RoleInterface
     public function getRole()
     {
         return $this->getName();
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param datetime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
     }
 }

@@ -20,9 +20,10 @@ class FixtureLoader implements FixtureInterface
         
         // create a user
         $user = new User();
-        $user->setUsername('test');
+        $user->setFirstname('testfirst');
+        $user->setLastname('testlast');
         $user->setSalt(md5(time()));
-        $user->setEmail('test@test666.com');
+        $user->setEmail('test@test.com');
         $user->setIsActive('1');
         
         // encode and set the password for the user,

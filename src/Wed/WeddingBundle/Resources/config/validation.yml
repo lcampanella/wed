@@ -1,0 +1,8 @@
+Wed\WeddingBundle\Entity\User:
+    properties:
+        firstname:
+            - NotBlank: { message: "El campo \"Nombre\" no puede estar vacio" }
+        lastname:
+            - NotBlank: { message: "El campo \"Apellido\" no puede estar vacio" }
+        email:
+            - NotBlank: { message: "El campo \"E-mail\" no puede estar vacio" }

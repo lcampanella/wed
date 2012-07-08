@@ -157,3 +157,14 @@ li{
 }
 
 /* // form 2 */
+
+/* Users List */
+
+ul {
+    clear: both;
+}
+
+ul li {
+    float: left;
+    padding-right: 10px;
+}

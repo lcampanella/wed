@@ -13,8 +13,8 @@ admin_home:
     defaults: { _controller: WedWeddingBundle:Admin:index }
     
 admin_edit_guest:
-    pattern:  /edit/guest/
-    defaults: { _controller: WedWeddingBundle:Admin:editGuest }
+    pattern:  /edit/guest/{id}
+    defaults: { _controller: WedWeddingBundle:Admin:editGuest, id: null }
 
 homepage:
     pattern:  /
@@ -23,3 +23,23 @@ homepage:
 Wedding:
     pattern:  /Wedding
     defaults: { _controller: WedWeddingBundle:Wedding:index }
+
+guests_save:
+    pattern:  /save/guest/
+    defaults: { _controller: WedWeddingBundle:Admin:guestsSave }
+    requirements:
+        _method:  POST
+
+users_list:
+    pattern:  /admin/users/list
+    defaults: { _controller: WedWeddingBundle:Admin:usersList }
+
+users_edit:
+    pattern:  /admin/users/edit/{id}
+    defaults: { _controller: WedWeddingBundle:Admin:editUser, id: null }
+
+users_save:
+    pattern:  /admin/users/save/
+    defaults: { _controller: WedWeddingBundle:Admin:usersSave }
+    requirements:
+        _method:  POST

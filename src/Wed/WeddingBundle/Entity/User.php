@@ -8,9 +8,9 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * Wedding\HomeBundle\Entity\Users
- *
+ * 
+ * @ORM\Entity(repositoryClass="Wed\WeddingBundle\Entity\UserRepository")
  * @ORM\Table(name="users")
- * @ORM\Entity
  */
 class User implements AdvancedUserInterface
 {
@@ -24,11 +24,18 @@ class User implements AdvancedUserInterface
     private $id;
 
     /**
-     * @var string $username
+     * @var string $firstname
      *
-     * @ORM\Column(name="username", type="string", length=50, nullable=false)
+     * @ORM\Column(name="firstname", type="string", length=50, nullable=false)
      */
-    private $username;
+    private $firstname;
+
+    /**
+     * @var string $lastname
+     *
+     * @ORM\Column(name="lastname", type="string", length=50, nullable=false)
+     */
+    private $lastname;
 
     /**
      * @var string $salt
@@ -94,23 +101,53 @@ class User implements AdvancedUserInterface
     }
 
     /**
-     * Set username
-     *
-     * @param string $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    /**
      * Get username
      *
-     * @return string 
+     * @return string
      */
     public function getUsername()
     {
-        return $this->username;
+        return $this->email;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string 
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
     }
 
     /**
@@ -244,7 +281,7 @@ class User implements AdvancedUserInterface
      */
     public function equals(UserInterface $user)
     {
-        return $this->username === $user->getUsername();
+        return $this->firstname === $user->getFirstname();
     }
 
     function isAccountNonExpired()
@@ -280,5 +317,15 @@ class User implements AdvancedUserInterface
     function isEnabled()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Add userRoles
+     *
+     * @param Wed\WeddingBundle\Entity\Role $userRoles
+     */
+    public function addRole(\Wed\WeddingBundle\Entity\Role $userRoles)
+    {
+        $this->userRoles[] = $userRoles;
     }
 }

@@ -14,5 +14,5 @@ class WeddingController extends Controller
     public function welcomeAction()
     {
         return $this->render('WedWeddingBundle:Wedding:welcome.html.twig');
-    }
+    }           
 }

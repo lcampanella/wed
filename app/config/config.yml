@@ -68,7 +68,7 @@ security:
 
     providers:
         main:
-            entity: { class: WedWeddingBundle:User, property: username }
+            entity: { class: WedWeddingBundle:User, property: email }
 
     firewalls:
         main:
