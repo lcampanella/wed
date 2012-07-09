@@ -24,8 +24,12 @@ Wedding:
     pattern:  /Wedding
     defaults: { _controller: WedWeddingBundle:Wedding:index }
 
+guests_edit:
+    pattern:  /admin/guests/edit/{id}
+    defaults: { _controller: WedWeddingBundle:Admin:editGuest, id: null, errors: null }
+
 guests_save:
-    pattern:  /save/guest/
+    pattern:  /admin/guests/save
     defaults: { _controller: WedWeddingBundle:Admin:guestsSave }
     requirements:
         _method:  POST
@@ -36,7 +40,7 @@ users_list:
 
 users_edit:
     pattern:  /admin/users/edit/{id}
-    defaults: { _controller: WedWeddingBundle:Admin:editUser, id: null }
+    defaults: { _controller: WedWeddingBundle:Admin:editUser, id: null, errors: null }
 
 users_save:
     pattern:  /admin/users/save/

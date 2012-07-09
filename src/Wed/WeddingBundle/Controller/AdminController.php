@@ -4,6 +4,7 @@ namespace Wed\WeddingBundle\Controller;
 
 use Wed\WeddingBundle\Entity\User;
 use Wed\WeddingBundle\Entity\Role;
+use Wed\WeddingBundle\Entity\Guest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  
 class AdminController extends Controller
@@ -26,45 +27,36 @@ class AdminController extends Controller
         );
     }
     
-    public function editGuestAction($id)
+    public function editGuestAction($id, $errors)
     {
-        if (!empty($id)) {
-            return $this->render('WedWeddingBundle:Admin:editguest.html.php', array('ownerId'=>$id));
+        if (empty($id)) {
+            return $this->redirect($this->generateUrl('users_list'));
+        } else {
+            $em = $this->get('doctrine')->getEntityManager();
+            $user = $em->getRepository('WedWeddingBundle:User')->findOneById($id);
+            if (empty($user)) {
+                return $this->redirect($this->generateUrl('users_list'));
+            }
         }
+
+        return $this->render('WedWeddingBundle:Admin:editguest.html.php', array('ownerId'=>$id, 'errors'=>$errors));
     }
     
     public function guestsSaveAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
 
-        $request = $this->getRequest()->request;
-        $ownerId = $request->get('ownerId');
-        $guests = $request->get('guest');
-        $firstnames = $request->get('firstname');
-        $lastnames = $request->get('lastname');
+        $result = $this->createGuests($this->getRequest()->request, $em);
 
-        foreach ($guests as $key => $dummy) {
-            $guestData[] = array(
-                'userId'=>$ownerId,
-                'firstname'=>$firstnames[$key],
-                'lastname'=>$lastnames[$key],
-                'email'=>'asd@asd.com'
-            );
+        try {
+            $em->flush();
+        } catch (\PDOException $e) {
+            $message = $e->getMessage();
+            $this->get('session')->setFlash('notice', $message);
+            return $this->redirect($this->generateUrl('guests_edit'));
         }
-        $em->getRepository('WedWeddingBundle:Guest')->createGuests($guestData);
 
-        exit;
-//        $request->request;
-//        var_dump($request->request);
-//        $em = $this->get('doctrine')->getEntityManager();
-//        $users = $em->getRepository('WedWeddingBundle:User')->getUsers();
-//
-//        return $this->render(
-//            'WedWeddingBundle:Admin:listUsers.html.php',
-//            array(
-//                'users' => $users
-//            )
-//        );
+        return $this->forward('WedWeddingBundle:Admin:editGuest', array('id'=>null, 'errors'=>$result));
     }
 
     public function usersListAction()
@@ -90,19 +82,17 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         // Create user
-        $message = $this->createUser($this->getRequest()->request, $em);
+        $result = $this->createUser($this->getRequest()->request, $em);
 
         try {
-//            $em->flush();
-//            $this->get('session')->setFlash('notice', $message);
+            $em->flush();
         } catch (\PDOException $e) {
-//            $message = $e->getMessage();
-//            $this->get('session')->setFlash('notice', $message);
-//            $this->forward('WedWeddingBundle:Admin:editUser', array('id'=>null));
+            $message = $e->getMessage();
+            $this->get('session')->setFlash('notice', $message);
+            return $this->redirect($this->generateUrl('users_edit'));
         }
-//        $this->get('session')->setFlash('notice', $message);
 
-        return $this->forward('WedWeddingBundle:Admin:editUser', array('id'=>null, 'errors'=>$message));
+        return $this->forward('WedWeddingBundle:Admin:editUser', array('id'=>null, 'errors'=>$result));
     }
 
     private function generateRandomPassword()
@@ -147,10 +137,6 @@ class AdminController extends Controller
         $firstname = $request->get('firstname');
         $email = $request->get('email');
 
-//        foreach ($errors as $error) {
-//            echo $error->getMessage().'<br />';
-//        }
-
         // create the ROLE_USER role
         $role = $this->createRoleUser('ROLE_USER', $em);
 
@@ -160,21 +146,56 @@ class AdminController extends Controller
         $user->setSalt(md5(time()));
         $user->setEmail($email);
         $user->setIsActive('1');
+//        $encoder = new MessageDigestPasswordEncoder('sha512', true, 10);
+//        $password = $encoder->encodePassword($this->generateRandomPassword(), $user->getSalt());
         $password = $this->generateRandomPassword();
         $user->setPassword($password);
 
         $validator = $this->get('validator');
         $errors = $validator->validate($user);
 
-        if (!empty($errors)) {
-            return $errors;
+        if ($errors->count()) {
+            return array('message'=>'Se produjeron errores.', 'errors'=>$errors);
         }
 
         $user->getUserRoles()->add($role);
         $em->persist($user);
 
-        $message = 'Usuario creado exitosamente.';
+        return array('message'=>'Usuario creado exitosamente.', 'errors'=>null);
+    }
 
-        return $message;
+    private function createGuests($request, $em)
+    {
+        $ownerId = $request->get('ownerId');
+        $guests = $request->get('guest');
+        $firstnames = $request->get('firstname');
+        $lastnames = $request->get('lastname');
+
+        foreach ($guests as $key => $dummy) {
+            $guestData[] = array(
+                'firstname'=>$firstnames[$key],
+                'lastname'=>$lastnames[$key]
+            );
+        }
+
+        foreach ($guestData as $guest) {
+            if (!empty($guest)) {
+                $newGuest = new Guest();
+                $newGuest->setUserId($ownerId);
+                $newGuest->setFirstname($guest['firstname']);
+                $newGuest->setLastname($guest['lastname']);
+
+                $validator = $this->get('validator');
+                $errors = $validator->validate($newGuest);
+
+                if ($errors->count()) {
+                    return array('message'=>'Se produjeron errores.', 'errors'=>$errors);
+                }
+
+                $em->persist($newGuest);
+            }
+        }
+
+        return array('message'=>'Invitados creados exitosamente.', 'errors'=>null);
     }
 }

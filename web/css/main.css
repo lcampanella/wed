@@ -160,11 +160,24 @@ li{
 
 /* Users List */
 
-ul {
+ul.users-list {
     clear: both;
 }
 
-ul li {
+ul.users-list li {
     float: left;
     padding-right: 10px;
+}
+
+ul.users-list li.user-id {
+    width: 50px;
+}
+ul.users-list li.user-firstname {
+    width: 100px;
+}
+ul.users-list li.user-lastname {
+    width: 150px;
+}
+ul.users-list li.user-guests {
+    width: 150px;
 }

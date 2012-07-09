@@ -5,10 +5,20 @@
     <form id="form2" action="<?php echo $view['router']->generate('users_save'); ?>" method="post">
         <h3><span>Nuevo usuario</span></h3>
         <fieldset>
-            <?php if (!empty($errors)): ?>
-                <?php foreach ($errors as $error): ?>
-                <li><?php echo $error->getMessage() ?></li>
-                <?php endforeach; ?>
+            <?php if ($view['session']->hasFlash('notice')): ?>
+            <div class="flash-notice">
+                <?php echo $view['session']->getFlash('notice') ?>
+            </div>
+            <?php endif; ?>
+            <div class="flash-notice">
+                <?php echo $errors['message']; ?>
+            </div>
+            <?php if (!empty($errors['errors'])): ?>
+                <ul>
+                    <?php foreach ($errors['errors'] as $error): ?>
+                    <li><?php echo $error->getMessage(); ?></li>
+                    <?php endforeach; ?>
+                </ul>
             <?php endif; ?>
             <p>
                 <label for="lastname">Apellido</label>
