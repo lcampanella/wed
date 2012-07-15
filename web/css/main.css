@@ -82,12 +82,12 @@ li{
 
 /* form 2 - Edit guest */
 
-#form2{
+.form-2{
     margin:1em 0;
     color:#fff;
     width:520px; /* customize width, this form have fluid layout */
     }
-#form2 h3{
+.form-2 h3{
     margin:0;
     background:#57a700 url(../images/form2/form_heading.gif) repeat-x;		
     color:#fff;
@@ -95,12 +95,12 @@ li{
     border:1px solid #57a700;
     border-bottom:none;
     }		
-#form2 h3 span{
+.form-2 h3 span{
     display:block;
     padding:10px 20px;
     background:url(../images/form2/form_ico.gif) no-repeat 93% 50%;			
     }				
-#form2 fieldset{
+.form-2 fieldset{
     margin:0;
     padding:0;
     border:none;	
@@ -108,33 +108,33 @@ li{
     background:#000 url(../images/form2/form_top.gif) repeat-x;		
     padding-bottom:1em;
     }		
-#form2 legend{display:none;}	
-#form2 p{margin:.5em 20px;}	
-#form2 label{display:block;}	
-#form2 input, #form2 textarea{		
+.form-2 legend{display:none;}
+.form-2 p{margin:.5em 20px;}
+.form-2 label{display:block;}
+.form-2 input, .form-2 textarea{
     width:272px;
     border:1px solid #111;
     background:#282828 url(../images/form2/form_input.gif) repeat-x;
     padding:2px 3px;
     color:#fff;
     }
-#form2 textarea{
+.form-2 textarea{
     height:125px;
     overflow:auto;
     }					
-#form2 p.submit{
+.form-2 p.submit{
     text-align:right;
     }	
-#form2 p.first{
+.form-2 p.first{
     border-bottom: 1px solid #ffffff;
 }
-#form2 p.first span{
+.form-2 p.first span{
     display: block;
 }
-#form2 p.first span img{
+.form-2 p.first span img{
     float: right;
 }
-#form2 button{
+.form-2 button{
     padding:0 20px;
     height:32px;
     line-height:32px;		
@@ -144,15 +144,16 @@ li{
     cursor:pointer;		
     text-align:center;		
 }
-#form2 ul{
+.form-2 ul{
     padding: 5px 20px;
     margin: 0px;
     background:#000000;
 }
-#form2 ul li{
+.form-2 ul li{
     color: #ffffff;
 }
-#form2 ul li.add-guest img{
+.form-2 ul li.add-guest img,
+.form-2 img.remove-guest{
     cursor: pointer;
 }
 
@@ -180,4 +181,31 @@ ul.users-list li.user-lastname {
 }
 ul.users-list li.user-guests {
     width: 150px;
+}
+
+/* Guest View */
+
+div.view-guest-container button.view-guest-button {
+
+}
+
+ul.view-guest-row {
+    clear: both;
+    height: 20px;
+    -webkit-padding-start: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+ul.view-guest-row li.view-guest-cell {
+    float: left;
+    padding: 0 8px 0
+}
+
+ul.view-guest-row:hover {
+    background-color: #eeeeee;
+}
+
+ul.view-guest-row:hover {
+    background-color: #eeeeee;
 }

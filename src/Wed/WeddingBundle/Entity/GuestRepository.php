@@ -2,7 +2,6 @@
 
 namespace Wed\WeddingBundle\Entity;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -11,5 +10,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class GuestRepository extends EntityRepository
 {
+    public function getGuestsByUserId($id)
+    {
+        $qb = $this->createQueryBuilder('g');
+        $qb->select('g')
+            ->where('g.user_id = :user_id')
+                ->setParameter('user_id', $id)
+            ->orderBy('g.lastname', 'ASC');
 
+        return $qb->getQuery()->getResult();
+    }
 }

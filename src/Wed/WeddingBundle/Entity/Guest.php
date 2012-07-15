@@ -1,7 +1,6 @@
 <?php
 namespace Wed\WeddingBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,11 +21,11 @@ class Guest
     private $id;
 
     /**
-     * @var integer $userId
+     * @var integer $user_id
      *
      * @ORM\Column(name="user_id", type="integer", nullable=false)
      */
-    private $userId;
+    private $user_id;
 
     /**
      * @var string $firstname
@@ -69,11 +68,11 @@ class Guest
     /**
      * Set userId
      *
-     * @param integer $userId
+     * @param integer $user_id
      */
-    public function setUserId($userId)
+    public function setUserId($user_id)
     {
-        $this->userId = $userId;
+        $this->user_id = $user_id;
     }
 
     /**

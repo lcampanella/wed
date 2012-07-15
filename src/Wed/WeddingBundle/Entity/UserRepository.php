@@ -11,8 +11,6 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
-    private $manager;
-
     public function getUsers()
     {
         $qb = $this->createQueryBuilder('u');

@@ -14,17 +14,25 @@ class AdminController extends Controller
         return $this->render('WedWeddingBundle:Admin:index.html.php');
     }
     
-    public function guestsListAction()
+    /*public function guestsListAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
         $users = $em->getRepository('WedWeddingBundle:User')->getUsers();
-        
+
         return $this->render(
             'WedWeddingBundle:Admin:listUsers.html.php',
             array(
                 'users' => $users
             )
         );
+    }*/
+
+    public function viewGuestsAction($id)
+    {
+        $em = $this->get('doctrine')->getEntityManager();
+        $guests = $em->getRepository('WedWeddingBundle:Guest')->getGuestsByUserId($id);
+
+        return $this->render('WedWeddingBundle:Admin:viewguest.html.php', array('ownerId'=>$id, 'guests'=>$guests));
     }
     
     public function editGuestAction($id, $errors)
@@ -37,12 +45,13 @@ class AdminController extends Controller
             if (empty($user)) {
                 return $this->redirect($this->generateUrl('users_list'));
             }
+            $guests = $em->getRepository('WedWeddingBundle:Guest')->getGuestsByUserId($id);
         }
 
-        return $this->render('WedWeddingBundle:Admin:editguest.html.php', array('ownerId'=>$id, 'errors'=>$errors));
+        return $this->render('WedWeddingBundle:Admin:editguest.html.php', array('ownerId'=>$id, 'errors'=>$errors, 'guests'=>$guests));
     }
     
-    public function guestsSaveAction()
+    public function guestsSaveAction($id)
     {
         $em = $this->get('doctrine')->getEntityManager();
 
@@ -56,7 +65,7 @@ class AdminController extends Controller
             return $this->redirect($this->generateUrl('guests_edit'));
         }
 
-        return $this->forward('WedWeddingBundle:Admin:editGuest', array('id'=>null, 'errors'=>$result));
+        return $this->forward('WedWeddingBundle:Admin:editGuest', array('id'=>$id, 'errors'=>$result));
     }
 
     public function usersListAction()
@@ -167,32 +176,47 @@ class AdminController extends Controller
     private function createGuests($request, $em)
     {
         $ownerId = $request->get('ownerId');
-        $guests = $request->get('guest');
-        $firstnames = $request->get('firstname');
-        $lastnames = $request->get('lastname');
+        $guests = $request->get('guest', array());
+        $guestsIds = $request->get('guestId', array());
 
+        $existentGuests = $em->getRepository('WedWeddingBundle:Guest')->getGuestsByUserId($ownerId);
+
+        foreach ($existentGuests as $guest) {
+            if (!in_array($guest->getId(), $guestsIds)) {
+                $em->remove($guest);
+            }
+        }
+
+        $guestData = array();
         foreach ($guests as $key => $dummy) {
             $guestData[] = array(
-                'firstname'=>$firstnames[$key],
-                'lastname'=>$lastnames[$key]
+                'id'        => (key_exists($key, $guestsIds)?$guestsIds[$key]:null),
+                'firstname' => $request->get('firstname_'.($key+1)),
+                'lastname'  => $request->get('lastname_'.($key+1))
             );
         }
 
+        $validator = $this->get('validator');
         foreach ($guestData as $guest) {
             if (!empty($guest)) {
-                $newGuest = new Guest();
-                $newGuest->setUserId($ownerId);
-                $newGuest->setFirstname($guest['firstname']);
-                $newGuest->setLastname($guest['lastname']);
-
-                $validator = $this->get('validator');
-                $errors = $validator->validate($newGuest);
+                $guestEntity = $em->getRepository('WedWeddingBundle:Guest')->findOneById($guest['id']);
+                if (!empty($guestEntity)) {
+                    $guestEntity->setUserId($ownerId);
+                    $guestEntity->setFirstname($guest['firstname']);
+                    $guestEntity->setLastname($guest['lastname']);
+                } else {
+                    $guestEntity = new Guest();
+                    $guestEntity->setUserId($ownerId);
+                    $guestEntity->setFirstname($guest['firstname']);
+                    $guestEntity->setLastname($guest['lastname']);
+                }
+                $errors = $validator->validate($guestEntity);
 
                 if ($errors->count()) {
                     return array('message'=>'Se produjeron errores.', 'errors'=>$errors);
                 }
 
-                $em->persist($newGuest);
+                $em->persist($guestEntity);
             }
         }
 

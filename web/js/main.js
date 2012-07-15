@@ -19,6 +19,24 @@ var guestController = (function (){
         });
     }
 
+    // Remove guest behaviour
+    function _handleRemoveGuest(){
+        $('img.remove-guest', 'div#fieldset-container').live('click', function(){
+            $(this).parents('fieldset.fieldset-guest').first().remove();
+
+            // Get guests numbers (except the first one, we use it for cloning purposes only)
+            var guestsNumbers = $('.guest-number strong').filter(function(index){return index!=0})
+            // Update guest numbers, so they are in ascendant order and with no gaps
+            $.each(guestsNumbers, function(i, strong){
+                $(strong).html('#'+(i+1));
+            });
+        });
+    }
+
+    function _validateForm(){
+        $('#edit-guest-form').validate();
+    }
+
     function _cloneFieldset(){
         var clonedFieldset = $('fieldset#base-guest-fieldset').clone().removeAttr('id').show();
         clonedFieldset.addClass('fieldset-guest');
@@ -28,7 +46,9 @@ var guestController = (function (){
     }
 
     function _init(){
+        _validateForm();
         _handleAddGuest();
+        _handleRemoveGuest();
     }
 
     return {

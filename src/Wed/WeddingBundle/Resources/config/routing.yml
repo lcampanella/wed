@@ -24,13 +24,17 @@ Wedding:
     pattern:  /Wedding
     defaults: { _controller: WedWeddingBundle:Wedding:index }
 
+guests_view:
+    pattern:  /admin/guests/view/{id}
+    defaults: { _controller: WedWeddingBundle:Admin:viewGuests, id: null }
+
 guests_edit:
     pattern:  /admin/guests/edit/{id}
     defaults: { _controller: WedWeddingBundle:Admin:editGuest, id: null, errors: null }
 
 guests_save:
-    pattern:  /admin/guests/save
-    defaults: { _controller: WedWeddingBundle:Admin:guestsSave }
+    pattern:  /admin/guests/save/{id}
+    defaults: { _controller: WedWeddingBundle:Admin:guestsSave, id: null }
     requirements:
         _method:  POST
 
