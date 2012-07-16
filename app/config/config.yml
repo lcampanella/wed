@@ -50,13 +50,14 @@ doctrine:
 
 
 ## Swiftmailer Configuration
-#swiftmailer:
+swiftmailer:
 #    transport:  smtp
 #    encryption: ssl
 #    auth_mode:  login
 #    host:       smtp.gmail.com
-#    username:   xxxxxxxx
-#    password:   xxxxxxxx
+    transport:  gmail
+    username:   luks01
+    password:   lento6lata
 
 ## Security Configuration
 security:

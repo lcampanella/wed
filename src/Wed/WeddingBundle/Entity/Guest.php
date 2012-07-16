@@ -41,6 +41,20 @@ class Guest
      */
     private $lastname;
 
+    /**
+     * @var integer $menu_id
+     *
+     * @ORM\Column(name="menu_id", type="integer", nullable=true)
+     */
+    private $menu_id;
+
+    /**
+    * @var boolean $confirmed
+    *
+    * @ORM\Column(name="confirmed", type="boolean", nullable=false)
+    */
+    private $confirmed = false;
+
     public function __construct()
     {
     }
@@ -113,5 +127,45 @@ class Guest
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * Get menu_id
+     *
+     * @return integer
+     */
+    public function getMenuId()
+    {
+        return $this->menu_id;
+    }
+
+    /**
+     * Set menu_id
+     *
+     * @param integer $menu_id
+     */
+    public function setMenuId($menu_id)
+    {
+        $this->menu_id = $menu_id;
+    }
+
+    /**
+     * Set confirmed
+     *
+     * @param boolean $confirmed
+     */
+    public function setConfirmed($confirmed)
+    {
+        $this->confirmed = $confirmed;
+    }
+
+    /**
+     * Get confirmed
+     *
+     * @return boolean
+     */
+    public function getConfirmed()
+    {
+        return $this->confirmed;
     }
 }

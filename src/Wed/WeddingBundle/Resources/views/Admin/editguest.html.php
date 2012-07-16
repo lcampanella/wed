@@ -14,11 +14,11 @@
             </p>
             <p>
                 <label>Apellido</label>
-                <input type="text" name="lastname[]" size="30" disabled="disabled" />
+                <input class="required" type="text" name="lastname_0" size="30" disabled="disabled" />
             </p>
             <p>
                 <label>Nombre</label>
-                <input type="text" name="firstname[]" size="30" disabled="disabled" />
+                <input class="required" type="text" name="firstname_0" size="30" disabled="disabled" />
             </p>
         </fieldset>
         <div id="fieldset-container">
@@ -63,11 +63,11 @@
                     </p>
                     <p>
                         <label>Apellido</label>
-                        <input class="required" type="text" name="lastname[]" size="30" />
+                        <input class="required" type="text" name="lastname_1" size="30" />
                     </p>
                     <p>
                         <label>Nombre</label>
-                        <input class="required" type="text" name="firstname[]" size="30" />
+                        <input class="required" type="text" name="firstname_1" size="30" />
                     </p>
                 </fieldset>
             <?php endif; ?>

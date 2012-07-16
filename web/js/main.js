@@ -13,6 +13,10 @@ var guestController = (function (){
             count = $('fieldset.fieldset-guest').length;
             $('span.guest-number strong', fieldset).html('#'+(count+1));
 
+            // Update index for lastname and firstname
+            $('input[name^=lastname_]', fieldset).attr('name', 'lastname_'+(count+1));
+            $('input[name^=firstname_]', fieldset).attr('name', 'firstname_'+(count+1));
+
             fieldsetContainer = $('div#fieldset-container');
             // Append new guest fieldset at the bottom of container
             fieldsetContainer.append(fieldset);
@@ -30,11 +34,21 @@ var guestController = (function (){
             $.each(guestsNumbers, function(i, strong){
                 $(strong).html('#'+(i+1));
             });
+
+            var lastnameInputs = $('input[name^=lastname_]:not([name=lastname_0])');
+            var firstnameInputs = $('input[name^=firstname_]:not([name=firstname_0])');
+            $.each(lastnameInputs, function(i, input){
+                $(input).attr('name', 'lastname_'+(i+1));
+            });
+            $.each(firstnameInputs, function(i, input){
+                $(input).attr('name', 'firstname_'+(i+1));
+            });
         });
     }
 
     function _validateForm(){
         $('#edit-guest-form').validate();
+        $('#edit-user-form').validate();
     }
 
     function _cloneFieldset(){

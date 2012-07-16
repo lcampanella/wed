@@ -54,7 +54,7 @@ class User implements AdvancedUserInterface
     /**
      * @var string $email
      *
-     * @ORM\Column(name="email", type="string", length=100, nullable=false)
+     * @ORM\Column(name="email", type="string", length=100, unique=true, nullable=false)
      */
     private $email;
 

@@ -73,6 +73,22 @@ class AdminController extends Controller
         $em = $this->get('doctrine')->getEntityManager();
         $users = $em->getRepository('WedWeddingBundle:User')->getUsers();
 
+        /*$message = \Swift_Message::newInstance()
+            ->setSubject('Mail Testing')
+            ->setFrom('send@example.com')
+            ->setReturnPath('luks01@gmail.com')
+            ->setTo('asdlaonchadjahsuu7hsuhd@gmail.com')
+//            ->setBcc(array('luks01@gmail.com','bs.sensei@gmail.com', 'oseando@hotmail.com', 'sk8_mza@yahoo.com.ar', 'solchumera@gmail.com'))
+//            ->setBcc(array('bs.sensei@gmail.com', 'luks.infomail@gmail.com', 'sk8_mza@yahoo.com.ar'))
+            ->setBcc(array('asdlaonchadjahsuu7hsuhd@gmail.com', 'asdlaonchadjahsuu7hsuhd@hotmail.com', 'asdlaonchadjahsuu7hsuhd@yahoo.com.ar'))
+            ->setContentType("text/html")
+            ->setBody($this->renderView('WedWeddingBundle:Admin:emailTemplate.html.php'))
+        ;
+
+        $sent = $this->get('mailer')->send($message, $failures);
+        var_dump($sent);
+        print_r($failures);*/
+
         return $this->render(
             'WedWeddingBundle:Admin:listUsers.html.php',
             array(
@@ -190,7 +206,7 @@ class AdminController extends Controller
         $guestData = array();
         foreach ($guests as $key => $dummy) {
             $guestData[] = array(
-                'id'        => (key_exists($key, $guestsIds)?$guestsIds[$key]:null),
+                'id'        => (key_exists($key, $guestsIds)?$guestsIds[$key]:0),
                 'firstname' => $request->get('firstname_'.($key+1)),
                 'lastname'  => $request->get('lastname_'.($key+1))
             );

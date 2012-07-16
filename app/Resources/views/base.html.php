@@ -10,6 +10,15 @@
         <title><?php $view['slots']->output('title', 'Wedding Application') ?></title>
     </head>
     <body>
+        <div id="headermenu">
+            <ul class="header-menu">
+                <li><a href="<?php echo $view['router']->generate('users_list'); ?>">Admin Home</a></li>
+                <li>Usuarios</li>
+                <li>Bla</li>
+                <li>Bla 2</li>
+            </ul>
+            <?php $view['slots']->output('headermenu') ?>
+        </div>
         <div id="container">
             <?php $view['slots']->output('container') ?>
         </div>

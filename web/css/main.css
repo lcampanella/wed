@@ -65,13 +65,20 @@ ul {
 }
 li{
     display:list-item;
-}	
-	
+}
+
+#headermenu{
+    margin:0 auto;
+    background:#fff;
+    width:600px;
+    padding:10px 40px;
+    text-align:left;
+}
+
 #container{	
     margin:0 auto;
     background:#fff;
     width:600px;
-    height: 300px;
     padding:20px 40px;
     text-align:left;
 }
@@ -156,13 +163,81 @@ li{
 .form-2 img.remove-guest{
     cursor: pointer;
 }
+.form-2 span.guest-number{
+    height: 32px;
+}
+.form-2 p.first span{
+    color: #ffff33;
+}
+
+.form-2 label.error{
+    color: #ff3300;
+}
+.form-2 div.flash-notice{
+    color: #00aa00;
+    background-color: #000000;
+    font-weight: bold;
+    padding: .5em 20px;
+}
 
 /* // form 2 */
 
+/* Header Menu */
+ul.header-menu {
+    clear: both;
+    height: 32px;
+    background-color: #000000;
+    -webkit-padding-start: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+ul.header-menu a:visited{
+    color: #cacaca;
+}
+ul.header-menu li {
+    color: #cacaca;
+    font-weight: bold;
+    float: left;
+    padding: 4px 25px 5px 5px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+ul.header-menu li:hover{
+    background-color: #00aa00;
+}
+
 /* Users List */
+div.user-list-menu {
+    width: 100%;
+    border-bottom: 2px #000000 solid;
+    margin-bottom: 15px;
+}
+
+div.user-list-menu ul {
+    width: 100%;
+    height: 32px;
+    -webkit-padding-start: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+div.user-list-menu ul li {
+    float: left;
+    padding-right: 10px;
+}
 
 ul.users-list {
+    font-size: 11px;
     clear: both;
+    height: 24px;
+    border-bottom: 1px #000000 solid;
+    -webkit-padding-start: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+ul.users-list:hover{
+    background-color: #eeeeee;
 }
 
 ul.users-list li {
@@ -170,17 +245,28 @@ ul.users-list li {
     padding-right: 10px;
 }
 
+ul.users-list li span {
+    height: 24px;
+    line-height: 24px;
+}
+
 ul.users-list li.user-id {
-    width: 50px;
+    width: 40px;
 }
 ul.users-list li.user-firstname {
-    width: 100px;
+    width: 80px;
 }
 ul.users-list li.user-lastname {
-    width: 150px;
+    width: 120px;
+}
+ul.users-list li.user-email {
+    width: 190px;
 }
 ul.users-list li.user-guests {
-    width: 150px;
+    width: 70px;
+}
+ul.users-list img {
+    vertical-align: middle;
 }
 
 /* Guest View */
@@ -200,10 +286,6 @@ ul.view-guest-row {
 ul.view-guest-row li.view-guest-cell {
     float: left;
     padding: 0 8px 0
-}
-
-ul.view-guest-row:hover {
-    background-color: #eeeeee;
 }
 
 ul.view-guest-row:hover {
