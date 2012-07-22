@@ -30,7 +30,11 @@ class AdminController extends Controller
     public function viewGuestsAction($id)
     {
         $em = $this->get('doctrine')->getEntityManager();
-        $guests = $em->getRepository('WedWeddingBundle:Guest')->getGuestsByUserId($id);
+        $guests = $em->getRepository('WedWeddingBundle:Guest')->getGuestsFullInfoByUserId($id);
+//        foreach ($guests as $guest) {
+//            $bla = $guest;
+//        }
+//        exit;
 
         return $this->render('WedWeddingBundle:Admin:viewguest.html.php', array('ownerId'=>$id, 'guests'=>$guests));
     }
@@ -99,18 +103,28 @@ class AdminController extends Controller
 
     public function editUserAction($id, $errors)
     {
-        return $this->render('WedWeddingBundle:Admin:edituser.html.php', array('errors'=>$errors));
+        $em = $this->getDoctrine()->getEntityManager();
+        $user = $em->getRepository('WedWeddingBundle:User')->findOneById((!empty($id)?$id:0));
+
+        return $this->render('WedWeddingBundle:Admin:edituser.html.php', array('user'=>$user, 'errors'=>$errors));
     }
 
     public function usersSaveAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
+        $isEdit = $this->getRequest()->request->get('isEdit');
+        $userId = $this->getRequest()->request->get('userId');
 
         // Create user
         $result = $this->createUser($this->getRequest()->request, $em);
 
         try {
             $em->flush();
+            if ($isEdit && !empty($userId)) {
+                return $this->redirect($this->generateUrl('users_list'));
+            } else {
+                return $this->forward('WedWeddingBundle:Admin:editUser', array('id'=>0, 'errors'=>$result));
+            }
         } catch (\PDOException $e) {
             $message = $e->getMessage();
             $this->get('session')->setFlash('notice', $message);
@@ -161,20 +175,31 @@ class AdminController extends Controller
         $lastname = $request->get('lastname');
         $firstname = $request->get('firstname');
         $email = $request->get('email');
+        $isEdit = $request->get('isEdit');
+        $userId = $request->get('userId');
 
-        // create the ROLE_USER role
-        $role = $this->createRoleUser('ROLE_USER', $em);
+        if (!empty($isEdit)) {
+            $user = $em->getRepository('WedWeddingBundle:User')->findOneById($userId);
+            $user->setFirstname($firstname);
+            $user->setLastname($lastname);
+            $user->setEmail($email);
+        } else {
+            // create the ROLE_USER role
+            $role = $this->createRoleUser('ROLE_USER', $em);
 
-        $user = new User();
-        $user->setFirstname($firstname);
-        $user->setLastname($lastname);
-        $user->setSalt(md5(time()));
-        $user->setEmail($email);
-        $user->setIsActive('1');
-//        $encoder = new MessageDigestPasswordEncoder('sha512', true, 10);
-//        $password = $encoder->encodePassword($this->generateRandomPassword(), $user->getSalt());
-        $password = $this->generateRandomPassword();
-        $user->setPassword($password);
+            $user = new User();
+            $user->setFirstname($firstname);
+            $user->setLastname($lastname);
+    //        $user->setSalt(md5(time()));
+            $user->setEmail($email);
+            $user->setIsActive('1');
+    //        $encoder = new MessageDigestPasswordEncoder('sha512', true, 10);
+    //        $password = $encoder->encodePassword($this->generateRandomPassword(), $user->getSalt());
+            $password = $this->generateRandomPassword();
+            $user->setPassword($password);
+
+            $user->getUserRoles()->add($role);
+        }
 
         $validator = $this->get('validator');
         $errors = $validator->validate($user);
@@ -183,7 +208,6 @@ class AdminController extends Controller
             return array('message'=>'Se produjeron errores.', 'errors'=>$errors);
         }
 
-        $user->getUserRoles()->add($role);
         $em->persist($user);
 
         return array('message'=>'Usuario creado exitosamente.', 'errors'=>null);
@@ -194,6 +218,8 @@ class AdminController extends Controller
         $ownerId = $request->get('ownerId');
         $guests = $request->get('guest', array());
         $guestsIds = $request->get('guestId', array());
+
+        $user = $em->getRepository('WedWeddingBundle:User')->findOneById($ownerId);
 
         $existentGuests = $em->getRepository('WedWeddingBundle:Guest')->getGuestsByUserId($ownerId);
 
@@ -216,15 +242,19 @@ class AdminController extends Controller
         foreach ($guestData as $guest) {
             if (!empty($guest)) {
                 $guestEntity = $em->getRepository('WedWeddingBundle:Guest')->findOneById($guest['id']);
-                if (!empty($guestEntity)) {
-                    $guestEntity->setUserId($ownerId);
+                if (!empty($guestEntity)) { // Guest already asigned, lets update it
+                    $guestEntity->setUser($user);
                     $guestEntity->setFirstname($guest['firstname']);
                     $guestEntity->setLastname($guest['lastname']);
-                } else {
+                } else { // New guest, lets create it
+                    // Set menu "Comun" as default for new guests
+                    $menu = $em->getRepository('WedWeddingBundle:Menu')->findOneByName('Comun');
+
                     $guestEntity = new Guest();
-                    $guestEntity->setUserId($ownerId);
+                    $guestEntity->setUser($user);
                     $guestEntity->setFirstname($guest['firstname']);
                     $guestEntity->setLastname($guest['lastname']);
+                    $guestEntity->setMenu($menu);
                 }
                 $errors = $validator->validate($guestEntity);
 

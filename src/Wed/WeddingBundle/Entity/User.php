@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
- * Wedding\HomeBundle\Entity\Users
+ * Wedding\WeddingBundle\Entity\User
  * 
  * @ORM\Entity(repositoryClass="Wed\WeddingBundle\Entity\UserRepository")
  * @ORM\Table(name="users")
@@ -40,7 +40,7 @@ class User implements AdvancedUserInterface
     /**
      * @var string $salt
      *
-     * @ORM\Column(name="salt", type="string", length=200, nullable=false)
+     * @ORM\Column(name="salt", type="string", length=200, nullable=true)
      */
     private $salt;
 
@@ -83,11 +83,19 @@ class User implements AdvancedUserInterface
      */
     protected $userRoles;
 
+    /**
+     * @var \Wed\WeddingBundle\Entity\Guest $guest
+     *
+     * @ORM\OneToMany(targetEntity="Wed\WeddingBundle\Entity\Guest", mappedBy="user")
+     */
+    private $guests;
+
     public function __construct()
     {
 //        $this->isActive = false;
         $this->userRoles = new ArrayCollection();
         //$this->salt = md5(uniqid(null, true));
+        $this->guests = new ArrayCollection();
     }
 
     /**

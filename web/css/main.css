@@ -207,26 +207,31 @@ ul.header-menu li:hover{
 }
 
 /* Users List */
-div.user-list-menu {
+div.user-list-menu,
+div.view-guest-menu {
     width: 100%;
     border-bottom: 2px #000000 solid;
     margin-bottom: 15px;
 }
 
-div.user-list-menu ul {
+div.user-list-menu ul,
+div.view-guest-menu ul {
     width: 100%;
     height: 32px;
+    padding-bottom: 1px;
     -webkit-padding-start: 0;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
 }
 
-div.user-list-menu ul li {
+div.user-list-menu ul li,
+div.view-guest-menu ul li {
     float: left;
     padding-right: 10px;
 }
 
-ul.users-list {
+ul.users-list,
+ul.view-guest-list {
     font-size: 11px;
     clear: both;
     height: 24px;
@@ -236,34 +241,42 @@ ul.users-list {
     -webkit-margin-after: 0;
 }
 
-ul.users-list:hover{
+ul.users-list:hover,
+ul.view-guest-list:hover {
     background-color: #eeeeee;
 }
 
-ul.users-list li {
+ul.users-list li,
+ul.view-guest-list li {
     float: left;
     padding-right: 10px;
 }
 
-ul.users-list li span {
+ul.users-list li span,
+ul.view-guest-list li span {
     height: 24px;
     line-height: 24px;
 }
 
 ul.users-list li.user-id {
-    width: 40px;
+    width: 35px;
 }
-ul.users-list li.user-firstname {
+ul.users-list li.user-firstname,
+ul.view-guest-list li.view-guest-firstname {
     width: 80px;
 }
-ul.users-list li.user-lastname {
+ul.users-list li.user-lastname,
+ul.view-guest-list li.view-guest-lastname {
     width: 120px;
 }
 ul.users-list li.user-email {
     width: 190px;
 }
 ul.users-list li.user-guests {
-    width: 70px;
+    width: 80px;
+}
+ul.users-list li.user-guests a {
+    margin-right: 6px;
 }
 ul.users-list img {
     vertical-align: middle;
@@ -275,7 +288,7 @@ div.view-guest-container button.view-guest-button {
 
 }
 
-ul.view-guest-row {
+/*ul.view-guest-row {
     clear: both;
     height: 20px;
     -webkit-padding-start: 0;
@@ -290,4 +303,4 @@ ul.view-guest-row li.view-guest-cell {
 
 ul.view-guest-row:hover {
     background-color: #eeeeee;
-}
+}*/

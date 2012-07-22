@@ -4,7 +4,7 @@ namespace Wed\WeddingBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Wedding\HomeBundle\Entity\Guests
+ * Wedding\WeddingBundle\Entity\Guest
  *
  * @ORM\Entity(repositoryClass="Wed\WeddingBundle\Entity\GuestRepository")
  * @ORM\Table(name="guests")
@@ -21,13 +21,6 @@ class Guest
     private $id;
 
     /**
-     * @var integer $user_id
-     *
-     * @ORM\Column(name="user_id", type="integer", nullable=false)
-     */
-    private $user_id;
-
-    /**
      * @var string $firstname
      *
      * @ORM\Column(name="firstname", type="string", length=50, nullable=false)
@@ -42,11 +35,18 @@ class Guest
     private $lastname;
 
     /**
-     * @var integer $menu_id
+     * @var \Wed\WeddingBundle\Entity\Menu $menu
      *
-     * @ORM\Column(name="menu_id", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Wed\WeddingBundle\Entity\Menu", inversedBy="guest")
      */
-    private $menu_id;
+    private $menu;
+
+    /**
+     * @var \Wed\WeddingBundle\Entity\User $user
+     *
+     * @ORM\ManyToOne(targetEntity="Wed\WeddingBundle\Entity\User", inversedBy="guest")
+     */
+    private $user;
 
     /**
     * @var boolean $confirmed
@@ -67,26 +67,6 @@ class Guest
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Get userId
-     *
-     * @return integer
-     */
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-
-    /**
-     * Set userId
-     *
-     * @param integer $user_id
-     */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
     }
 
     /**
@@ -130,26 +110,6 @@ class Guest
     }
 
     /**
-     * Get menu_id
-     *
-     * @return integer
-     */
-    public function getMenuId()
-    {
-        return $this->menu_id;
-    }
-
-    /**
-     * Set menu_id
-     *
-     * @param integer $menu_id
-     */
-    public function setMenuId($menu_id)
-    {
-        $this->menu_id = $menu_id;
-    }
-
-    /**
      * Set confirmed
      *
      * @param boolean $confirmed
@@ -167,5 +127,25 @@ class Guest
     public function getConfirmed()
     {
         return $this->confirmed;
+    }
+
+    public function getMenu()
+    {
+        return $this->menu;
+    }
+
+    public function setMenu(Menu $menu)
+    {
+        $this->menu = $menu;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user)
+    {
+        $this->user = $user;
     }
 }

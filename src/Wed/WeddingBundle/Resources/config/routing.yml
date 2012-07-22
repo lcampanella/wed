@@ -18,11 +18,15 @@ admin_edit_guest:
 
 homepage:
     pattern:  /
-    defaults: { _controller: WedWeddingBundle:Wedding:welcome }
+    defaults: { _controller: WedWeddingBundle:Guest:index }
 
 Wedding:
     pattern:  /Wedding
     defaults: { _controller: WedWeddingBundle:Wedding:index }
+
+guest_index:
+    pattern:  /guest
+    defaults: { _controller: WedWeddingBundle:Guest:index }
 
 guests_view:
     pattern:  /admin/guests/view/{id}
