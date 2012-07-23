@@ -336,4 +336,9 @@ class User implements AdvancedUserInterface
     {
         $this->userRoles[] = $userRoles;
     }
+
+    public function getGuests()
+    {
+        return $this->guests;
+    }
 }

@@ -1,0 +1,77 @@
+/* Circular Content Carousel Style */
+.ca-container     { position:relative; margin:0px auto; width:1160px; height:400px; }
+.ca-wrapper       { width:100%; height:100%; position:relative; }
+.ca-item          { position:relative; float:left; width:290px; height:100%;  }
+.ca-close {
+	position:absolute; 
+	top:0px; 
+	right:0px; 
+	width:30px; 
+	height:30px; 
+	background:#d10b6d url('../../images/guest/close-on.png') center center no-repeat;
+	text-indent:-9000px; 
+	outline:none; 
+	}
+.ca-close:hover   { 
+	background:url('../../images/guest/close-hover.png') center center no-repeat;
+	}
+.ca-item-main    {
+	position:absolute; 
+	top:0px; 
+	left:4px; 
+	right:4px; 
+	bottom:0px; 
+	overflow:hidden; 
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.4);
+	   -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.4);
+	        box-shadow: 0px 0px 8px rgba(0,0,0,0.4);
+	}
+
+.ca-item span.title {
+	position:absolute; 
+	bottom:0%; 
+	margin:0 auto;
+	padding:10px 20px; 
+	font-weight:bold; 
+	font: normal 11px/1.6 Arial, Verdana, Sans-serif;
+	text-transform:uppercase;
+	background:url('../../images/guest/opacs/dark70.png');
+	color:#fff;
+	}
+
+
+/* width:0px; = expands to width of the wrapper minus 1 element */ 
+.ca-content-wrapper        { position:absolute; top:0px; right:15px; z-index:10000;	width:0px; overflow:hidden; text-align:left; }
+.ca-content{
+	width:810px;
+	height:360px;		
+	overflow:hidden;
+	padding:20px 30px;	
+	background:#000;	
+	-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+	   -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+	        box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+	}
+.ca-content div{
+    float: left;
+}
+.ca-content-map{
+    width: 235px;
+    overflow: hidden;
+}
+.content-church{
+    width: 290px !important;
+}
+.ca-content-map p, .ca-content-honeymoon p{
+    margin-bottom: 0.2em;
+}
+.ca-content-honeymoon h5{
+    margin-bottom: 0.3em;
+}
+
+.ca-content-text           { font-size: 14px; font-style: italic; font-family: "Georgia","Times New Roman",serif; margin:10px 20px; padding:10px 20px; line-height:24px; }
+.ca-content-text p         { padding-bottom:5px; }
+
+.ca-nav span               { width:40px; height:40px; background:#d10b6d url(../../images/guest/ca-nav-left.png) no-repeat center center; position:absolute; top:0%; margin-top:0; left:10px; text-indent:-9000px; opacity:0.5; cursor:pointer; z-index:100; }
+.ca-nav span.ca-nav-next   { background:#d10b6d url(../../images/guest/ca-nav-right.png) no-repeat center center; left:auto; left:50px; }
+.ca-nav span:hover         { opacity:1.0; }

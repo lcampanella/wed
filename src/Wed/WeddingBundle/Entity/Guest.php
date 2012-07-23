@@ -148,4 +148,10 @@ class Guest
     {
         $this->user = $user;
     }
+
+    public function getFullname()
+    {
+        $fullname = $this->lastname.' '.$this->firstname;
+        return $fullname;
+    }
 }

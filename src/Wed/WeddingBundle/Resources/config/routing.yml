@@ -1,5 +1,5 @@
 _security_login:
-    pattern:  /login
+    pattern:  /login/
     defaults: { _controller: WedWeddingBundle:Security:login }
 
 _security_check:
@@ -25,8 +25,16 @@ Wedding:
     defaults: { _controller: WedWeddingBundle:Wedding:index }
 
 guest_index:
-    pattern:  /guest
+    pattern:  /guest/
     defaults: { _controller: WedWeddingBundle:Guest:index }
+guest_confirmation:
+    pattern:  /guest/confirmation/
+    defaults: { _controller: WedWeddingBundle:Guest:confirmation }
+guest_save_confirmation:
+    pattern:  /guest/confirmation/save
+    defaults: { _controller: WedWeddingBundle:Guest:saveConfirmation }
+    requirements:
+            _method:  POST
 
 guests_view:
     pattern:  /admin/guests/view/{id}
@@ -43,7 +51,7 @@ guests_save:
         _method:  POST
 
 users_list:
-    pattern:  /admin/users/list
+    pattern:  /admin/users/list/
     defaults: { _controller: WedWeddingBundle:Admin:usersList }
 
 users_edit:

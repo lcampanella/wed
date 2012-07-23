@@ -1,4 +1,4 @@
-var guestController = (function (){
+var mainController = (function (){
     "use strict";
 
     // Add guest behaviour
@@ -71,5 +71,5 @@ var guestController = (function (){
 })();
 
 $(document).ready(function() {
-    guestController.init();
+    mainController.init();
 });

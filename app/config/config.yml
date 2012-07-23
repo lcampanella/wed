@@ -62,10 +62,7 @@ swiftmailer:
 ## Security Configuration
 security:
     encoders:
-        Wed\WeddingBundle\Entity\User:
-            algorithm: sha512
-            encode-as-base64: true
-            iterations: 10
+        Wed\WeddingBundle\Entity\User: plaintext
 
     providers:
         main:
@@ -77,10 +74,13 @@ security:
             form_login:
                 check_path: /login_check
                 login_path: /login
-            logout: true
+            logout:
+                path:   /logout
+                target: /login
             security: true
             anonymous: true
 
     access_control:
-        - { path: /admin/.*, role: ROLE_ADMIN }
+        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/guest, role: ROLE_ADMIN }
         - { path: /.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
