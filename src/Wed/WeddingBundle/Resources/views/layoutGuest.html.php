@@ -54,7 +54,7 @@
                </li>
                <li><a href="contact.html">Contact</a></li>-->
                 <li><a href="<?php echo $view['router']->generate('guest_confirmation'); ?>" class="zocial confirm">Confirmar Asistencia</a></li>
-                <li><a href="#" class="zocial choosemenu">Elegir Menu</a></li>
+                <li><a href="<?php echo $view['router']->generate('guest_choose_menu'); ?>" class="zocial choosemenu">Elegir Menu</a></li>
             </ul>
         </nav>
     </div>

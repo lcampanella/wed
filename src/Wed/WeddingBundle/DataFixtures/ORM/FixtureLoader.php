@@ -49,6 +49,16 @@ class FixtureLoader implements FixtureInterface
 
         $manager->persist($menu2);
 
+        $menu3 = new Menu();
+        $menu3->setName('Celiaco');
+
+        $manager->persist($menu3);
+
+        $menu4 = new Menu();
+        $menu4->setName('Hipertenso');
+
+        $manager->persist($menu4);
+
         $guest = new Guest();
         $guest->setFirstname('firstname1');
         $guest->setLastname('lastname1');

@@ -753,12 +753,18 @@ ul.services li .scontent { margin-left:100px; margin-right:20px; }
         color: #6FB0DE;
     }
 
+    .notice-error {
+        width: 315px; /* Because I like it that way */
+        padding: 10px 5px 10px 40px; /* To move the text away from the borders and from the image on the left */
+        border: 1px solid; /* Top border's width, style and color */
+        background: url('../../images/guest/error.png') 7px 9px no-repeat; /* From left to right: background color, background image, horizontal position, vertical position and background repeat */
+        margin-bottom: 10px;
+    }
     .notice-information {
-        width: 200px; /* Because I like it that way */
-        padding: 15px 10px 15px 50px; /* To move the text away from the borders and from the image on the left */
-        border-top: 1px solid #A7C1DF; /* Top border's width, style and color */
-        border-bottom: 1px solid #A7C1DF; /* Bottom border's width, style and color */
-        background: #DFEEFF url('../../images/guest/info.png') 10px center no-repeat; /* From left to right: background color, background image, horizontal position, vertical position and background repeat */
+        width: 563px; /* Because I like it that way */
+        padding: 10px 5px 10px 40px; /* To move the text away from the borders and from the image on the left */
+        border: 1px solid #A7C1DF; /* Top border's width, style and color */
+        background: url('../../images/guest/info.png') 8px 10px no-repeat; /* From left to right: background color, background image, horizontal position, vertical position and background repeat */
     }
     .notice-success {
         width: 235px; /* Because I like it that way */

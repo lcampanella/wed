@@ -42,13 +42,23 @@ class Menu
     }
 
     /**
-     * Set name
+     * Get id
      *
-     * @param string $name
+     * @return string
      */
-    public function setName($name)
+    public function getId()
     {
-        $this->name = $name;
+        return $this->id;
+    }
+
+    /**
+     * Set id
+     *
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -59,5 +69,15 @@ class Menu
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 }

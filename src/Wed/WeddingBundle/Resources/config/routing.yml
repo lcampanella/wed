@@ -35,6 +35,14 @@ guest_save_confirmation:
     defaults: { _controller: WedWeddingBundle:Guest:saveConfirmation }
     requirements:
             _method:  POST
+guest_choose_menu:
+    pattern:  /guest/menu/
+    defaults: { _controller: WedWeddingBundle:Guest:chooseMenu }
+guest_save_menu:
+    pattern:  /guest/menu/save
+    defaults: { _controller: WedWeddingBundle:Guest:saveMenu }
+    requirements:
+            _method:  POST
 
 guests_view:
     pattern:  /admin/guests/view/{id}
