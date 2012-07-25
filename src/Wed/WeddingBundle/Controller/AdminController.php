@@ -31,10 +31,6 @@ class AdminController extends Controller
     {
         $em = $this->get('doctrine')->getEntityManager();
         $guests = $em->getRepository('WedWeddingBundle:Guest')->getGuestsFullInfoByUserId($id);
-//        foreach ($guests as $guest) {
-//            $bla = $guest;
-//        }
-//        exit;
 
         return $this->render('WedWeddingBundle:Admin:viewguest.html.php', array('ownerId'=>$id, 'guests'=>$guests));
     }
@@ -78,20 +74,21 @@ class AdminController extends Controller
         $users = $em->getRepository('WedWeddingBundle:User')->getUsers();
 
         /*$message = \Swift_Message::newInstance()
-            ->setSubject('Mail Testing')
-            ->setFrom('send@example.com')
-            ->setReturnPath('luks01@gmail.com')
+            ->setSubject('Nos casamos!')
+            ->setFrom(array('confirmacion@labodadelanio.com.ar' => 'Sole y Luks'))
+//            ->setReturnPath('confirmacion@labodadelanio.com.ar')
             ->setTo('asdlaonchadjahsuu7hsuhd@gmail.com')
 //            ->setBcc(array('luks01@gmail.com','bs.sensei@gmail.com', 'oseando@hotmail.com', 'sk8_mza@yahoo.com.ar', 'solchumera@gmail.com'))
-//            ->setBcc(array('bs.sensei@gmail.com', 'luks.infomail@gmail.com', 'sk8_mza@yahoo.com.ar'))
-            ->setBcc(array('asdlaonchadjahsuu7hsuhd@gmail.com', 'asdlaonchadjahsuu7hsuhd@hotmail.com', 'asdlaonchadjahsuu7hsuhd@yahoo.com.ar'))
+            ->setBcc(array('bs.sensei@gmail.com', 'luks.infomail@gmail.com', 'sk8_mza@yahoo.com.ar'))
+//            ->setBcc(array('asdlaonchadjahsuu7hsuhd@gmail.com', 'asdlaonchadjahsuu7hsuhd@hotmail.com', 'asdlaonchadjahsuu7hsuhd@yahoo.com.ar'))
             ->setContentType("text/html")
             ->setBody($this->renderView('WedWeddingBundle:Admin:emailTemplate.html.php'))
         ;
 
         $sent = $this->get('mailer')->send($message, $failures);
         var_dump($sent);
-        print_r($failures);*/
+        print_r($failures);
+        exit;*/
 
         return $this->render(
             'WedWeddingBundle:Admin:listUsers.html.php',

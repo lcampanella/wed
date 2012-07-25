@@ -9,6 +9,9 @@ class GuestController extends Controller
     public function indexAction()
     {
         $securityContext = $this->get('security.context');
+//        if (false === ($securityContext->isGranted('ROLE_ADMIN') || $securityContext->isGranted('ROLE_USER') )) {
+//            return $this->redirect($this->generateUrl('_security_login'));
+//        }
         $token = $securityContext->getToken();
         $user = $token->getUser();
 

@@ -51,13 +51,13 @@ doctrine:
 
 ## Swiftmailer Configuration
 swiftmailer:
-#    transport:  smtp
+    transport:  smtp
 #    encryption: ssl
-#    auth_mode:  login
-#    host:       smtp.gmail.com
-    transport:  gmail
-    username:   luks01
-    password:   lento6lata
+    auth_mode:  login
+    host:       mail.labodadelanio.com.ar
+#    transport:  gmail
+    username:   confirmacion+labodadelanio.com.ar
+    password:   confirmacion168219
 
 ## Security Configuration
 security:
@@ -85,4 +85,5 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/guest, roles: [ROLE_USER, ROLE_ADMIN] }
-        - { path: /.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /.*, roles: [ROLE_USER, ROLE_ADMIN] }
