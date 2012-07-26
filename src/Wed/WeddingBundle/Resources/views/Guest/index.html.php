@@ -12,7 +12,7 @@
 <?php $view['slots']->start('subheader') ?>
 <div class="header_teaser">
     <div class="inner">
-        <h3>Ser&aacute; excluyente la confirmaci&oacute;n de asistencia de cada invitado antes del 1 de septiembre de 2012 para poder tener acceso al sal&oacute;n.</h3>
+        <h3 class="header-title-note">Ser&aacute; excluyente la <span class="note-important">confirmaci&oacute;n</span> de asistencia de cada invitado antes del <span class="note-important">1 de septiembre de 2012</span> para poder tener acceso al sal&oacute;n.</h3>
     </div>
 </div>
 <!-- /- .header_teaser -->
@@ -152,4 +152,5 @@
     <!-- /-.slider_wrapper -->
 </div>
 <!-- /-#featured_slider -->
+<div class="ca-footer-note">(haga click sobre las imagenes para acceder a la informaci&oacute;n)</div>
 <?php $view['slots']->stop() ?>

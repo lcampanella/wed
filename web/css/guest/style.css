@@ -296,6 +296,20 @@ h2.largeheading { font-size:30px; font-weight:bold; letter-spacing:-2px; line-he
 	margin:0 auto;  
 	}
 
+h3.header-title-note {
+    border: 1px solid white;
+    color: #FFFFFF !important;
+    font-size: 15px;
+    background: url(../../images/guest/opacs/white20.png);
+}
+h3 span.note-important {
+    color: #DB0000;
+    font-weight: bold;
+    font-size: 15px !important;
+    display: inline !important;
+    letter-spacing: normal !important;
+}
+
 .one_half       { width:47.5%; }
 .one_third      { width:30%; }
 .two_third      { width:65%; }

@@ -1,0 +1,18 @@
+.login-wrapper {
+    width: 270px;
+    margin: 120px auto;
+    background: url(../images/guest/opacs/dark80.png);
+    padding: 20px;
+}
+
+#login label {
+    display: block;
+}
+
+#login button {
+    margin-top: 15px;
+}
+
+#login input {
+    width: 260px;
+}

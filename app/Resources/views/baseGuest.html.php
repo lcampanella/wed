@@ -76,12 +76,10 @@
                     <div class="custom_three_fourth">
                         <div class="one_fourth last float-right">
                             <div class="widget contactinfo">
-                                <h3 class="widget-title">Get in Touch</h3>
+                                <h3 class="widget-title">Mant&eacute;ngase en contacto</h3>
                                 <ul>
-                                    <li class="icon-home">IdealBeauty</li>
-                                    <li class="icon-mobile">Mobile:	0123456789</li>
-                                    <li class="icon-phone">Fax: 001-0123-4567</li>
-                                    <li class="icon-email">Mail: yourname@domain.com</li>
+                                    <li class="icon-home">labodadelanio.com.ar</li>
+                                    <li class="icon-email">E-Mail: info@labodadelanio.com.ar</li>
                                 </ul>
                             </div>
                         </div>

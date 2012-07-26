@@ -79,3 +79,9 @@
 .ca-nav span               { width:40px; height:40px; background:#d10b6d url(../../images/guest/ca-nav-left.png) no-repeat center center; position:absolute; top:0%; margin-top:0; left:10px; text-indent:-9000px; opacity:0.5; cursor:pointer; z-index:100; }
 .ca-nav span.ca-nav-next   { background:#d10b6d url(../../images/guest/ca-nav-right.png) no-repeat center center; left:auto; left:50px; }
 .ca-nav span:hover         { opacity:1.0; }
+
+.ca-footer-note {
+    float: right;
+    margin-right: 4px;
+    color: #A5A518;
+}
