@@ -56,8 +56,12 @@
     float: left;
 }
 .ca-content-map{
-    width: 235px;
+    width: 335px;
     overflow: hidden;
+}
+.ca-content-map p.big-bold-font{
+    font-size: 25px;
+    font-weight: bold;
 }
 .content-church{
     width: 290px !important;

@@ -302,6 +302,7 @@ h2.largeheading { font-size:30px; font-weight:bold; letter-spacing:-2px; line-he
 .one_fourth     { width:21.2%; }
 .one_fifth      { width:16%; }
 .three_fourth   { width:73.8%;   }
+.custom_three_fourth   { width:68.8%;   }
 .four_fifth     { width:79%;   }
 .two_fifth      { width:37%; }
 .three_fifth    { width:58%;   }
@@ -312,7 +313,7 @@ h2.largeheading { font-size:30px; font-weight:bold; letter-spacing:-2px; line-he
 .one_fourth, .one_fifth,
 .four_fifth, .one_sixth,
 .two_fifth, .three_fifth,
-.three_fourth   {
+.three_fourth, .custom_three_fourth {
 	position:relative;
 	display:inline;
 	float:left;
@@ -321,6 +322,8 @@ h2.largeheading { font-size:30px; font-weight:bold; letter-spacing:-2px; line-he
 	}
 
 .last { margin-right: 0 !important; }
+
+.float-right { float: right; }
 
 /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
      * Header, Logo

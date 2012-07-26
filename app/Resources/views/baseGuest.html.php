@@ -50,39 +50,40 @@
                 <div class="inner">
                     <div class="one_fourth ">
                         <section>
-                            <h2 class="largeheading"><span>Wanna be a Model Get in Touch!</span></h2>
-                            <a href="#" class="more-link">click here</a>
+                            <h2 class="largeheading"><span>All you need is love...</span></h2>
                         </section>
                     </div>
                     <!-- /- .one_fourth -->
 
-                    <div class="one_fourth ">
-                        <div class="widget">
-                            <h3 class="widget-title">Makes Photos</h3>
-                            <p>Etiam in mattis eros. Etiam lacinia nequenec rutrum magna. Mauris sem metus, varius at sit amet</p>
-                            <a href="#" class="more-link">continue reading</a>
-                        </div>
-                    </div>
+<!--                    <div class="one_fourth ">-->
+<!--                        <div class="widget">-->
+<!--                            <h3 class="widget-title">Makes Photos</h3>-->
+<!--                            <p>Etiam in mattis eros. Etiam lacinia nequenec rutrum magna. Mauris sem metus, varius at sit amet</p>-->
+<!--                            <a href="#" class="more-link">continue reading</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <!-- /- .one_fourth -->
 
-                    <div class="one_fourth ">
-                        <div class="widget">
-                            <h3 class="widget-title">Makes Photos</h3>
-                            <p>Vestibulum id odio ut arcu rutrum consequat. Duis id massa arcu. Duis adipiscing dignissim nunc a aliquam. </p>
-                            <a href="#" class="more-link">continue reading</a>
-                        </div>
-                    </div>
+<!--                    <div class="one_fourth ">-->
+<!--                        <div class="widget">-->
+<!--                            <h3 class="widget-title">Makes Photos</h3>-->
+<!--                            <p>Vestibulum id odio ut arcu rutrum consequat. Duis id massa arcu. Duis adipiscing dignissim nunc a aliquam. </p>-->
+<!--                            <a href="#" class="more-link">continue reading</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <!-- /- .one_fourth -->
 
-                    <div class="one_fourth last">
-                        <div class="widget contactinfo">
-                            <h3 class="widget-title">Get in Touch</h3>
-                            <ul>
-                                <li class="icon-home">IdealBeauty</li>
-                                <li class="icon-mobile">Mobile:	0123456789</li>
-                                <li class="icon-phone">Fax: 001-0123-4567</li>
-                                <li class="icon-email">Mail: yourname@domain.com</li>
-                            </ul>
+                    <div class="custom_three_fourth">
+                        <div class="one_fourth last float-right">
+                            <div class="widget contactinfo">
+                                <h3 class="widget-title">Get in Touch</h3>
+                                <ul>
+                                    <li class="icon-home">IdealBeauty</li>
+                                    <li class="icon-mobile">Mobile:	0123456789</li>
+                                    <li class="icon-phone">Fax: 001-0123-4567</li>
+                                    <li class="icon-email">Mail: yourname@domain.com</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <!-- /- .one_fourth last -->

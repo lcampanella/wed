@@ -34,8 +34,26 @@ var guestController = (function (){
         });
     }
 
+    function _loadjPhotoGrid(){
+        $('#usGridGallery').jphotogrid({
+            baseCSS: {
+                width: '150px',
+                height: '90px',
+                padding: '0px'
+            },
+            selectedCSS: {
+                top: '65px',
+                left: '25px',
+                width: '400px',
+                height: '225px',
+                padding: '0px'
+            }
+        });
+    }
+
     function _init(){
         _handleMaps();
+        _loadjPhotoGrid();
     }
 
     return {

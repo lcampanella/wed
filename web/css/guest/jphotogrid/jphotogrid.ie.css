@@ -1,0 +1,6 @@
+#usGridGallery li { filter:alpha(opacity=50); }
+#usGridGallery li.active { filter:alpha(opacity=100); }
+#usGridGallery li.selected {
+	filter:alpha(opacity=100);
+	background: black;
+}
