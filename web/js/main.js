@@ -59,10 +59,38 @@ var mainController = (function (){
         return clonedFieldset;
     }
 
+    function _handleCancelButtons(){
+        $('button#cancelButton').click(function(e){
+            e.preventDefault();
+            window.location.href = $(this).val();
+        });
+    }
+
+    function _handleSpoolEmailButton(){
+        $(".confirm").easyconfirm();
+        $("#buttonSpoolEmails").click(function(e) {
+            var button = $(this);
+            button.attr('disabled', 'disabled');
+
+            var url = $(this).val();
+            $.post(url, {}, function(data, textStatus) {
+                if (textStatus == 'success') {
+                    if (data.responseCode == 200) {
+                        $('.notice-success').html(data.notice).slideDown('slow').delay(4000).slideUp('slow', function(){button.removeAttr('disabled');});
+                    } else {
+                        $('.notice-error').html(data.notice).slideDown('slow').delay(4000).slideUp('slow', function(){button.removeAttr('disabled');});
+                    }
+                }
+            });
+        });
+    }
+
     function _init(){
         _validateForm();
         _handleAddGuest();
         _handleRemoveGuest();
+        _handleCancelButtons();
+        _handleSpoolEmailButton();
     }
 
     return {

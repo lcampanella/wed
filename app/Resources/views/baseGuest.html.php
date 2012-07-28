@@ -53,30 +53,21 @@
                             <h2 class="largeheading"><span>All you need is love...</span></h2>
                         </section>
                     </div>
-                    <!-- /- .one_fourth -->
 
-<!--                    <div class="one_fourth ">-->
-<!--                        <div class="widget">-->
-<!--                            <h3 class="widget-title">Makes Photos</h3>-->
-<!--                            <p>Etiam in mattis eros. Etiam lacinia nequenec rutrum magna. Mauris sem metus, varius at sit amet</p>-->
-<!--                            <a href="#" class="more-link">continue reading</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                    <!-- /- .one_fourth -->
+                    <div class="one_half">
+                            <div class="widget">
+                                <h3>"La felicidad es un trayecto, no un destino.
+                                    Atesora cada momento que vives,
+                                    y atesóralo más porque lo compartiste
+                                    con alguien especial;
+                                    tan especial que lo llevas en tu corazón."</h3>
+                            </div>
+                    </div>
 
-<!--                    <div class="one_fourth ">-->
-<!--                        <div class="widget">-->
-<!--                            <h3 class="widget-title">Makes Photos</h3>-->
-<!--                            <p>Vestibulum id odio ut arcu rutrum consequat. Duis id massa arcu. Duis adipiscing dignissim nunc a aliquam. </p>-->
-<!--                            <a href="#" class="more-link">continue reading</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                    <!-- /- .one_fourth -->
-
-                    <div class="custom_three_fourth">
-                        <div class="one_fourth last float-right">
+                    <div class="one_sixth last">
+                        <div class="one_sixth last">
                             <div class="widget contactinfo">
-                                <h3 class="widget-title">Mant&eacute;ngase en contacto</h3>
+                                <h3 class="widget-title">Contacto</h3>
                                 <ul>
                                     <li class="icon-home">labodadelanio.com.ar</li>
                                     <li class="icon-email">E-Mail: info@labodadelanio.com.ar</li>

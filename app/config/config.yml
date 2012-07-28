@@ -56,8 +56,11 @@ swiftmailer:
     auth_mode:  login
     host:       mail.labodadelanio.com.ar
 #    transport:  gmail
-    username:   confirmacion+labodadelanio.com.ar
-    password:   confirmacion168219
+    username:   sole.luks+labodadelanio.com.ar
+    password:   soleluks168219
+    spool:
+        type: file
+        path: %kernel.root_dir%/spool
 
 ## Security Configuration
 security:

@@ -11,21 +11,11 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('WedWeddingBundle:Admin:index.html.php');
-    }
-    
-    /*public function guestsListAction()
-    {
         $em = $this->get('doctrine')->getEntityManager();
         $users = $em->getRepository('WedWeddingBundle:User')->getUsers();
 
-        return $this->render(
-            'WedWeddingBundle:Admin:listUsers.html.php',
-            array(
-                'users' => $users
-            )
-        );
-    }*/
+        return $this->render('WedWeddingBundle:Admin:listUsers.html.php', array('users'=>$users));
+    }
 
     public function viewGuestsAction($id)
     {
@@ -72,23 +62,6 @@ class AdminController extends Controller
     {
         $em = $this->get('doctrine')->getEntityManager();
         $users = $em->getRepository('WedWeddingBundle:User')->getUsers();
-
-        /*$message = \Swift_Message::newInstance()
-            ->setSubject('Nos casamos!')
-            ->setFrom(array('confirmacion@labodadelanio.com.ar' => 'Sole y Luks'))
-//            ->setReturnPath('confirmacion@labodadelanio.com.ar')
-            ->setTo('asdlaonchadjahsuu7hsuhd@gmail.com')
-//            ->setBcc(array('luks01@gmail.com','bs.sensei@gmail.com', 'oseando@hotmail.com', 'sk8_mza@yahoo.com.ar', 'solchumera@gmail.com'))
-            ->setBcc(array('bs.sensei@gmail.com', 'luks.infomail@gmail.com', 'sk8_mza@yahoo.com.ar'))
-//            ->setBcc(array('asdlaonchadjahsuu7hsuhd@gmail.com', 'asdlaonchadjahsuu7hsuhd@hotmail.com', 'asdlaonchadjahsuu7hsuhd@yahoo.com.ar'))
-            ->setContentType("text/html")
-            ->setBody($this->renderView('WedWeddingBundle:Admin:emailTemplate.html.php'))
-        ;
-
-        $sent = $this->get('mailer')->send($message, $failures);
-        var_dump($sent);
-        print_r($failures);
-        exit;*/
 
         return $this->render(
             'WedWeddingBundle:Admin:listUsers.html.php',
@@ -264,5 +237,32 @@ class AdminController extends Controller
         }
 
         return array('message'=>'Invitados creados exitosamente.', 'errors'=>null);
+    }
+
+    public function spoolEmailsAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $users = $em->getRepository('WedWeddingBundle:User')->findAll();
+        $totalFailures = array();
+        foreach ($users as $user) {
+            $guests = $user->getGuests();
+
+            $message = \Swift_Message::newInstance();
+            $message->setSubject('Nos casamos!!!')
+                ->setFrom(array('sole.luks@labodadelanio.com.ar' => 'Sole y Luks'))
+    //            ->setReturnPath('sole.luks@labodadelanio.com.ar')
+                ->setTo($user->getEmail())
+                ->setContentType("text/html")
+                ->setBody($this->renderView('WedWeddingBundle:Admin:emailTemplate.html.php', array('user'=>$user, 'guests'=>$guests)))
+            ;
+
+            $this->get('mailer')->send($message, $failures);
+            array_push($totalFailures, $failures);
+        }
+
+        $return = array("responseCode"=>200,  "notice"=>'Los e-mails han sido guardados con &eacutexito.');
+
+        $return = json_encode($return);
+        return new \Symfony\Component\HttpFoundation\Response($return, 200, array('Content-Type'=>'application/json'));
     }
 }

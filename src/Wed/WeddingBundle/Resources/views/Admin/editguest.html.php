@@ -73,7 +73,7 @@
             <?php endif; ?>
 
         </div>
-        <p class="submit"><button id="submit-guest-save" type="submit">Guardar</button></p>
+        <p class="submit"><button value="<?php echo $view['router']->generate('guests_view', array("id"=>$ownerId)); ?>" type="button" id="cancelButton">Cancelar</button><button id="submit-guest-save" type="submit">Guardar</button></p>
     </form>
 </div>
 <?php $view['slots']->stop() ?>

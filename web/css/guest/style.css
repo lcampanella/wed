@@ -310,17 +310,17 @@ h3 span.note-important {
     letter-spacing: normal !important;
 }
 
-.one_half       { width:47.5%; }
+.one_half       { width:45.5%; }
 .one_third      { width:30%; }
 .two_third      { width:65%; }
 .one_fourth     { width:21.2%; }
 .one_fifth      { width:16%; }
 .three_fourth   { width:73.8%;   }
-.custom_three_fourth   { width:68.8%;   }
+.custom_three_fourth   { width:35.8%;   }
 .four_fifth     { width:79%;   }
 .two_fifth      { width:37%; }
 .three_fifth    { width:58%;   }
-.one_sixth      { width:12.5%; }
+.one_sixth      { width:17.5%; }
 
 .one_half, .half_width, 
 .one_third, .two_third,
@@ -334,6 +334,7 @@ h3 span.note-important {
 	margin-right:5%;
 	margin-bottom:20px;
 	}
+.one_sixth.last { margin-left: 5%; }
 
 .last { margin-right: 0 !important; }
 

@@ -116,7 +116,7 @@
                     </div>
                     <div class="ca-content-wrapper">
                         <div class="ca-content">
-                            <div class="ca-content-map">
+                            <div class="ca-content-map content-plauto">
                                 <h3>Sal&oacute;n Plauto</h3>
                                 <p>San Ireneo 243</p>
                                 <p>Capital Federal. Caballito.</p>

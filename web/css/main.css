@@ -79,7 +79,7 @@ li{
     margin:0 auto;
     background:#fff;
     width:600px;
-    padding:20px 40px;
+    padding:10px 40px;
     text-align:left;
 }
 
@@ -204,6 +204,10 @@ ul.header-menu li {
 }
 ul.header-menu li:hover{
     background-color: #00aa00;
+}
+
+div.admin-list-submenu {
+    text-align: right;
 }
 
 /* Users List */

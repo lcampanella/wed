@@ -1,6 +1,11 @@
 <?php $view->extend('WedWeddingBundle::layout.html.php') ?>
 
 <?php $view['slots']->start('container') ?>
+<div class="notice-success ui-state-highlight ui-corner-all" style="display: none"></div>
+<div class="notice-error" style="display: none"></div>
+<div class="admin-list-submenu">
+    <span><button type="button" id="buttonSpoolEmails" class="confirm button medium red" value="<?php echo $view['router']->generate('admin_spool_emails'); ?>">Enviar E-mails</button></span>
+</div>
 <div class="user-list-menu">
     <ul>
         <li><a href="<?php echo $view['router']->generate('users_edit'); ?>"><img src="<?php echo $view['assets']->getUrl('images/form2/add_guest.png') ?>" alt="Agregar Usuario" title="Agregar Usuario" /></a></li>

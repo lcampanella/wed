@@ -28,10 +28,8 @@ var guestConfirmationController = (function (){
             var name = parts[0];
             var id = parts[1];
             if ($(this).attr('checked')) {
-                console.log($('input[name=checkbox_'+id+']'));
                 $('input[name=checkbox_'+id+']').val('1');
             } else {
-                console.log($('input[name=checkbox_'+id+']'));
                 $('input[name=checkbox_'+id+']').val('0');
             }
         });

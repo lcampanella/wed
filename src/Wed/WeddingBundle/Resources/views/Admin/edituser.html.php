@@ -52,7 +52,7 @@
                 <input class="required email" type="text" name="email" id="email" size="30" />
             </p>
             <?php endif; ?>
-            <p class="submit"><button type="submit">Guardar</button></p>
+            <p class="submit"><button value="<?php echo $view['router']->generate('admin_home');?>" type="button" id="cancelButton">Cancelar</button><button type="submit" id="saveUserButton">Guardar</button></p>
         </fieldset>
     </form>
 </div>
