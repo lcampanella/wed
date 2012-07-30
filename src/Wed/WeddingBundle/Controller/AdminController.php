@@ -104,6 +104,33 @@ class AdminController extends Controller
         return $this->forward('WedWeddingBundle:Admin:editUser', array('id'=>null, 'errors'=>$result));
     }
 
+    public function guestSpoolEmailAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $user = $em->getRepository('WedWeddingBundle:User')->findOneById($id);
+        if (!empty($user)) {
+            $guests = $user->getGuests();
+
+            $message = \Swift_Message::newInstance();
+            $message->setSubject('Nos casamos!!!')
+                ->setFrom(array('sole.luks@labodadelanio.com.ar' => 'Sole y Luks'))
+                ->setTo($user->getEmail())
+                ->setBcc('luks01@gmail.com')
+                ->setContentType("text/html")
+                ->setBody($this->renderView('WedWeddingBundle:Admin:emailTemplate.html.php', array('user'=>$user, 'guests'=>$guests)))
+            ;
+
+            $this->get('mailer')->send($message, $failures);
+
+            $return = array("responseCode"=>200,  "notice"=>'El e-mail ha sido guardado con &eacutexito.');
+        } else {
+            $return = array("responseCode"=>500,  "notice"=>'User id '.$id.' no existe.');
+        }
+
+        $return = json_encode($return);
+        return new \Symfony\Component\HttpFoundation\Response($return, 200, array('Content-Type'=>'application/json'));
+    }
+
     private function generateRandomPassword()
     {
         $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";

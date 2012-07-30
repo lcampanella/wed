@@ -84,6 +84,23 @@ var mainController = (function (){
         });
     }
 
+    function _handleSpoolEmailForUser(){
+        $(".spoolEmailForUser").click(function(e) {
+            e.preventDefault();
+
+            var url = $(this).attr('href');
+            $.post(url, {}, function(data, textStatus) {
+                if (textStatus == 'success') {
+                    if (data.responseCode == 200) {
+                        $('.notice-success').html(data.notice).slideDown('slow').delay(4000).slideUp('slow');
+                    } else {
+                        $('.notice-error').html(data.notice).slideDown('slow').delay(4000).slideUp('slow');
+                    }
+                }
+            });
+        });
+    }
+
     function _init(){
         // Confirm dialog
         $(".confirm").easyconfirm();
@@ -93,6 +110,7 @@ var mainController = (function (){
         _handleRemoveGuest();
         _handleCancelButtons();
         _handleSpoolEmailButton();
+        _handleSpoolEmailForUser();
     }
 
     return {

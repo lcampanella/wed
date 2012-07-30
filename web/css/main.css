@@ -249,6 +249,7 @@ ul.view-guest-list.confirmed {
 }
 
 ul.users-list.pending:hover,
+ul.users-list.dohover:hover,
 ul.view-guest-list.pending:hover {
     background-color: #eeeeee;
 }

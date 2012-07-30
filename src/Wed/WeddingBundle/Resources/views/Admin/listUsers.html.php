@@ -13,7 +13,7 @@
 </div>
 <div>
     <?php foreach ($users as $user) : ?>
-    <ul class="users-list">
+    <ul class="users-list dohover">
         <li class="user-id"><span><?php echo $user->getId(); ?></span></li>
         <li class="user-lastname"><span><?php echo $user->getLastname(); ?></span></li>
         <li class="user-firstname"><span><?php echo $user->getFirstname(); ?></span></li>
@@ -21,6 +21,7 @@
         <li class="user-guests"><span>
             <a href="<?php echo $view['router']->generate('users_edit', array('id'=>$user->getId())); ?>"><img src="<?php echo $view['assets']->getUrl('images/doc_edit.png') ?>" alt="Editar Usuario" title="Editar Usuario" /></a>
             <a href="<?php echo $view['router']->generate('guests_view', array('id'=>$user->getId())); ?>"><img src="<?php echo $view['assets']->getUrl('images/silhouette.png') ?>" alt="Ver Invitados" title="Ver Invitados" /></a>
+            <a href="<?php echo $view['router']->generate('admin_user_spool_email', array('id'=>$user->getId())); ?>" class="spoolEmailForUser"><img src="<?php echo $view['assets']->getUrl('images/email.png') ?>" alt="Spool E-mail" title="Spool E-mail" /></a>
         </span></li>
     </ul>
     <?php endforeach; ?>
