@@ -12,10 +12,10 @@
         </ul>
 
         <ul class="atpsocials right">
-            <li><a class="facebook" target="_blank" href="http://www.facebook.com/lucas.campanella"><img src="<?php echo $view['assets']->getUrl('images/guest/sociables/facebook.png') ?>" alt="" /></a></li>
-            <li><a class="twitter" target="_blank" href="http://twitter.com/1uks"><img src="<?php echo $view['assets']->getUrl('images/guest/sociables/twitter.png') ?>" alt="" /></a></li>
-            <li><a class="facebook" target="_blank" href="http://www.facebook.com/Buggyta"><img src="<?php echo $view['assets']->getUrl('images/guest/sociables/facebook.png') ?>" alt="" /></a></li>
-            <li><a class="twitter" target="_blank" href="http://twitter.com/buggytta"><img src="<?php echo $view['assets']->getUrl('images/guest/sociables/twitter.png') ?>" alt="" /></a></li>
+            <li title="Facebook Luks"><a class="facebook" target="_blank" href="http://www.facebook.com/lucas.campanella"><img src="<?php echo $view['assets']->getUrl('images/guest/sociables/facebook.png') ?>" alt="" /></a></li>
+            <li title="Twitter Luks"><a class="twitter" target="_blank" href="http://twitter.com/1uks"><img src="<?php echo $view['assets']->getUrl('images/guest/sociables/twitter.png') ?>" alt="" /></a></li>
+            <li title="Facebook Sole"><a class="facebook" target="_blank" href="http://www.facebook.com/Buggyta"><img src="<?php echo $view['assets']->getUrl('images/guest/sociables/facebook.png') ?>" alt="" /></a></li>
+            <li title="Twitter Sole"><a class="twitter" target="_blank" href="http://twitter.com/buggytta"><img src="<?php echo $view['assets']->getUrl('images/guest/sociables/twitter.png') ?>" alt="" /></a></li>
             <li title="Cerrar Sesi&oacute;n"><a class="logout" href="<?php echo $view['router']->generate('_security_logout'); ?>"><img src="<?php echo $view['assets']->getUrl('images/guest/logout.png') ?>" title="Cerrar Sesi&oacute;n" alt="Cerrar Sesi&oacute;n" /></a></li>
         </ul>
         <!-- /- .atpsocials -->
