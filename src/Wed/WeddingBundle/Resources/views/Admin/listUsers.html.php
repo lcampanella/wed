@@ -21,7 +21,6 @@
         <li class="user-guests"><span>
             <a href="<?php echo $view['router']->generate('users_edit', array('id'=>$user->getId())); ?>"><img src="<?php echo $view['assets']->getUrl('images/doc_edit.png') ?>" alt="Editar Usuario" title="Editar Usuario" /></a>
             <a href="<?php echo $view['router']->generate('guests_view', array('id'=>$user->getId())); ?>"><img src="<?php echo $view['assets']->getUrl('images/silhouette.png') ?>" alt="Ver Invitados" title="Ver Invitados" /></a>
-            <a href="<?php echo $view['router']->generate('users_edit', array('id'=>$user->getId())); ?>"><img src="<?php echo $view['assets']->getUrl('images/round_delete.png') ?>" alt="Eliminar Usuario" title="Eliminar Usuario" /></a>
         </span></li>
     </ul>
     <?php endforeach; ?>

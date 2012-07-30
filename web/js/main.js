@@ -67,7 +67,6 @@ var mainController = (function (){
     }
 
     function _handleSpoolEmailButton(){
-        $(".confirm").easyconfirm();
         $("#buttonSpoolEmails").click(function(e) {
             var button = $(this);
             button.attr('disabled', 'disabled');
@@ -86,6 +85,9 @@ var mainController = (function (){
     }
 
     function _init(){
+        // Confirm dialog
+        $(".confirm").easyconfirm();
+
         _validateForm();
         _handleAddGuest();
         _handleRemoveGuest();

@@ -1,14 +1,10 @@
 <?php $view->extend('::baseLogin.html.php') ?>
 
-<?php $view['slots']->start('title') ?>
-Login
-<?php $view['slots']->stop() ?>
-
 <?php $view['slots']->start('container') ?>
 
 <div class="login-wrapper">
     <?php if ($error): ?>
-    <div class="error"><?php echo $error->getMessage(); ?></div>
+    <div class="error"><?php echo $view['translator']->trans($error->getMessage(), array(), 'login', 'es_AR'); ?></div>
     <?php endif; ?>
     <form action="<?php echo $view['router']->generate('_security_check'); ?>" method="post" id="login">
         <div>

@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><?php $view['slots']->output('title', 'Bienvenido!') ?></title>
+    <title><?php $view['slots']->output('title', 'Sole &amp; Luks') ?></title>
+    <link rel="shortcut icon" href="<?php echo $view['assets']->getUrl('images/favicon.ico') ?>" />
 
     <link href="<?php echo $view['assets']->getUrl('css/guest/style.css') ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo $view['assets']->getUrl('css/guest/shortcodes.css') ?>" rel="stylesheet" type="text/css" />

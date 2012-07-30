@@ -10,6 +10,7 @@ framework:
     csrf_protection:    true
     validation:         { enabled: true, enable_annotations: true }
     templating:         { engines: ['twig', 'php'] } #assets_version: SomeVersionScheme
+    translator: { fallback: en }
     session:
         default_locale: en
         lifetime:       3600

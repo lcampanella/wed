@@ -244,9 +244,12 @@ ul.view-guest-list {
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
 }
+ul.view-guest-list.confirmed {
+    background-color: #B7E4B7;
+}
 
-ul.users-list:hover,
-ul.view-guest-list:hover {
+ul.users-list.pending:hover,
+ul.view-guest-list.pending:hover {
     background-color: #eeeeee;
 }
 
@@ -274,7 +277,7 @@ ul.view-guest-list li.view-guest-lastname {
     width: 120px;
 }
 ul.users-list li.user-email {
-    width: 190px;
+    width: 230px;
 }
 ul.users-list li.user-guests {
     width: 80px;

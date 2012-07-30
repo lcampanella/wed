@@ -78,6 +78,8 @@ class GuestController extends Controller
     {
         $em = $this->get('doctrine')->getEntityManager();
         $parameters = $this->getRequest()->request->all();
+        // Get logged in user
+        $loggedUserId = $this->get('security.context')->getToken()->getUser()->getId();
 
         foreach ($parameters as $param_name => $param_val) {
             list($fieldName, $guestId) = explode('_', $param_name);
@@ -86,7 +88,7 @@ class GuestController extends Controller
                 continue;
             }
             $guest = $em->getRepository('WedWeddingBundle:Guest')->findOneById($guestId);
-            if (empty($guest)) {
+            if (empty($guest) || $guest->getUser()->getId()!=$loggedUserId) {
                 throw new \Exception('El invitado con id '.$guestId.' no existe.');
             }
             $guest->setConfirmed($confirmed);
@@ -101,11 +103,13 @@ class GuestController extends Controller
     {
         $em = $this->get('doctrine')->getEntityManager();
         $parameters = $this->getRequest()->request->all();
+        // Get logged in user
+        $loggedUserId = $this->get('security.context')->getToken()->getUser()->getId();
 
         foreach ($parameters as $param_name => $param_val) {
             list($fieldName, $guestId) = explode('_', $param_name);
             $guest = $em->getRepository('WedWeddingBundle:Guest')->findOneById($guestId);
-            if (empty($guest)) {
+            if (empty($guest) || $guest->getUser()->getId()!=$loggedUserId) {
                 throw new \Exception('El invitado con id '.$guestId.' no existe.');
             }
             $menu = $em->getRepository('WedWeddingBundle:Menu')->findOneById($param_val);
