@@ -104,6 +104,23 @@ class AdminController extends Controller
         return $this->forward('WedWeddingBundle:Admin:editUser', array('id'=>null, 'errors'=>$result));
     }
 
+    public function viewGuestsConfirmationAction()
+    {
+        $em = $this->get('doctrine')->getEntityManager();
+        $users = $em->getRepository('WedWeddingBundle:User')->findAll();
+
+        $guestCollection = array();
+        foreach ($users as $user) {
+            $guests = $em->getRepository('WedWeddingBundle:Guest')->getGuestsByUserId($user->getId());
+            $guestCollection[$user->getId()] = array(
+                'user'=>$user,
+                'guests'=>$guests
+            );
+        }
+
+        return $this->render('WedWeddingBundle:Admin:viewConfirmations.html.php', array('guests'=>$guestCollection));
+    }
+
     public function guestSpoolEmailAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();

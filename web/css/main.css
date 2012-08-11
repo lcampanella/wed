@@ -235,7 +235,8 @@ div.view-guest-menu ul li {
 }
 
 ul.users-list,
-ul.view-guest-list {
+ul.view-guest-list,
+ul.view-confirmations-guests {
     font-size: 11px;
     clear: both;
     height: 24px;
@@ -244,24 +245,32 @@ ul.view-guest-list {
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
 }
-ul.view-guest-list.confirmed {
+ul.view-guest-list.confirmed,
+ul.view-confirmations-guests.confirmed {
     background-color: #B7E4B7;
+}
+
+ul.view-confirmations-guests.pending {
+    background-color: #ffb6ad;
 }
 
 ul.users-list.pending:hover,
 ul.users-list.dohover:hover,
-ul.view-guest-list.pending:hover {
+ul.view-guest-list.pending:hover,
+ul.view-confirmations-guests.pending:hover {
     background-color: #eeeeee;
 }
 
 ul.users-list li,
-ul.view-guest-list li {
+ul.view-guest-list li,
+ul.view-confirmations-guests li {
     float: left;
     padding-right: 10px;
 }
 
 ul.users-list li span,
-ul.view-guest-list li span {
+ul.view-guest-list li span,
+ul.view-confirmations-guests li span {
     height: 24px;
     line-height: 24px;
 }
@@ -273,9 +282,16 @@ ul.users-list li.user-firstname,
 ul.view-guest-list li.view-guest-firstname {
     width: 80px;
 }
+ul.view-confirmations-guests li.view-guest-firstname {
+    width: 100px;
+}
 ul.users-list li.user-lastname,
-ul.view-guest-list li.view-guest-lastname {
+ul.view-guest-list li.view-guest-lastname,
+ul.view-confirmations-guests li.view-guest-lastname {
     width: 120px;
+}
+ul.view-confirmations-guests li.view-guest-lastname {
+    margin-left: 30px;
 }
 ul.users-list li.user-email {
     width: 230px;
@@ -288,6 +304,19 @@ ul.users-list li.user-guests a {
 }
 ul.users-list img {
     vertical-align: middle;
+}
+
+ul.view-confirmations-user-row {
+    height: 24px;
+    margin: 10px 0 0 0;
+    padding: 0;
+    background-color: #303C72;
+}
+
+ul.view-confirmations-user-row li {
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 /* Guest View */

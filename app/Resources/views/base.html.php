@@ -17,6 +17,7 @@
         <div id="headermenu">
             <ul class="header-menu">
                 <li><a href="<?php echo $view['router']->generate('users_list'); ?>">Listado Usuarios</a></li>
+                <li><a href="<?php echo $view['router']->generate('admin_view_confirmations'); ?>">Ver Confirmaciones</a></li>
             </ul>
             <?php $view['slots']->output('headermenu') ?>
         </div>

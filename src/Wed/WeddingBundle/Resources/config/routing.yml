@@ -16,6 +16,10 @@ admin_edit_guest:
     pattern:  /edit/guest/{id}
     defaults: { _controller: WedWeddingBundle:Admin:editGuest, id: null }
 
+admin_view_confirmations:
+    pattern: /admin/view/confirmations/
+    defaults: { _controller: WedWeddingBundle:Admin:viewGuestsConfirmation }
+
 admin_spool_emails:
     pattern:  /admin/spoolemails/
     defaults: { _controller: WedWeddingBundle:Admin:spoolEmails }

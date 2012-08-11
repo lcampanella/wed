@@ -158,6 +158,11 @@ class User implements AdvancedUserInterface
         return $this->lastname;
     }
 
+    public function getFullname()
+    {
+        return $this->lastname.', '.$this->firstname;
+    }
+
     /**
      * Set salt
      *
