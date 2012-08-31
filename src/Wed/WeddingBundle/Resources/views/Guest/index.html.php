@@ -10,12 +10,66 @@
 <?php $view['slots']->stop() ?>
 
 <?php $view['slots']->start('subheader') ?>
+<?php if (!$dateLimitNotReached): ?>
 <div class="header_teaser">
     <div class="inner">
         <h3 class="header-title-note">Ser&aacute; excluyente la <span class="note-important">confirmaci&oacute;n</span> de asistencia de cada invitado antes del <span class="note-important">1 de septiembre de 2012</span> para poder tener acceso al sal&oacute;n.</h3>
     </div>
 </div>
 <!-- /- .header_teaser -->
+<?php else: ?>
+<script type="text/javascript">
+    $(function(){
+        dateObj = guestController.getDaysHoursMinSecs(false);
+
+        $('#counter').countdown({
+            image: '<?php echo $view['assets']->getUrl('images/countdown/digits.png') ?>',
+            startTime: dateObj,
+            digitHeight: 77
+        });
+    });
+</script>
+<style type="text/css">
+    br { clear: both; }
+    div#counter {
+        width: 512px;
+        margin: 10px auto;
+        padding-bottom: 1px;
+    }
+    .cntSeparator {
+        font-size: 54px;
+        margin: 0px 7px;
+        color: #ffffff;
+        height: 78px;
+    }
+    .desc {
+        width: 514px;
+        margin: 0 auto;
+        margin-bottom: 15px;
+        height: 20px;
+    }
+    .desc div {
+        float: left;
+        font-family: Arial;
+        width: 70px;
+        margin-right: 65px;
+        font-size: 13px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .desc div.last {
+        margin: 0;
+    }
+</style>
+<div id="counter"></div>
+<div class="desc">
+    <div>Días</div>
+    <div>Horas</div>
+    <div>Minutos</div>
+    <div class="last">Segundos</div>
+</div>
+<?php endif; ?>
 <?php $view['slots']->stop() ?>
 
 <?php $view['slots']->start('content') ?>

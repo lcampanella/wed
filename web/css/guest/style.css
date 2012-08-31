@@ -804,6 +804,9 @@ ul.services li .scontent { margin-left:100px; margin-right:20px; }
     .product-meta ul { list-style: none; }
     .product-meta ul li { float: left; width: 245px; font-size: 12px; }
 
+    .product-meta ul.guest-confirmed { color: #6DD15A; }
+    .product-meta ul.guest-not-confirmed { color: #F54646; }
+
     .product h2.entry-title { margin-bottom:0px; }
     .product h2.entry-title a { color:#d10b6d;}
     .product h2.entry-title a:hover { color:#fff;}

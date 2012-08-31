@@ -15,7 +15,7 @@ class GuestController extends Controller
         $token = $securityContext->getToken();
         $user = $token->getUser();
 
-        return $this->render('WedWeddingBundle:Guest:index.html.php', array('user'=>$user));
+        return $this->render('WedWeddingBundle:Guest:index.html.php', array('user'=>$user, 'dateLimitNotReached'=>$this->isConfirmationAllowed()));
     }
 
     public function confirmationAction()
@@ -27,7 +27,11 @@ class GuestController extends Controller
         $em = $this->get('doctrine')->getEntityManager();
         $guests = $em->getRepository('WedWeddingBundle:Guest')->getGuestsFullInfoByUserId($user->getId());
 
-        return $this->render('WedWeddingBundle:Guest:confirm.html.php', array('user'=>$user, 'guests'=>$guests));
+        if ($this->isConfirmationAllowed()) { // Confirmation allowed by date
+            return $this->render('WedWeddingBundle:Guest:confirm.html.php', array('user'=>$user, 'guests'=>$guests));
+        } else {  // If we reach the date limit for confirmation, show another view
+            return $this->render('WedWeddingBundle:Guest:confirm-no-edition.html.php', array('user'=>$user, 'guests'=>$guests));
+        }
     }
 
     public function chooseMenuAction()
@@ -40,11 +44,21 @@ class GuestController extends Controller
         $guests = $em->getRepository('WedWeddingBundle:Guest')->getGuestsFullInfoByUserId($user->getId());
         $menues = $em->getRepository('WedWeddingBundle:Menu')->findAll();
 
-        return $this->render('WedWeddingBundle:Guest:choose-menu.html.php', array('user'=>$user, 'guests'=>$guests, 'menues'=>$menues));
+        if ($this->isConfirmationAllowed()) { // Confirmation allowed by date
+            return $this->render('WedWeddingBundle:Guest:choose-menu.html.php', array('user'=>$user, 'guests'=>$guests, 'menues'=>$menues));
+        } else { // If we reach the date limit for confirmation, show another view
+            return $this->render('WedWeddingBundle:Guest:choose-menu-no-edition.html.php', array('user'=>$user, 'guests'=>$guests, 'menues'=>$menues));
+        }
     }
 
     public function saveMenuAction()
     {
+        if (!$this->isConfirmationAllowed()) { // If we reach the date limit for confirmation
+            $return = array("responseCode"=>500,  "notice"=>'too late my little friend.');
+            $return = json_encode($return);
+            return new \Symfony\Component\HttpFoundation\Response($return,200,array('Content-Type'=>'application/json'));
+        }
+
         try {
             $em = $this->updateGuestsMenu();
             $em->flush();
@@ -60,6 +74,12 @@ class GuestController extends Controller
 
     public function saveConfirmationAction()
     {
+        if (!$this->isConfirmationAllowed()) { // If we reach the date limit for confirmation
+            $return = array("responseCode"=>500,  "notice"=>'too late my little friend.');
+            $return = json_encode($return);
+            return new \Symfony\Component\HttpFoundation\Response($return,200,array('Content-Type'=>'application/json'));
+        }
+
         $em = $this->updateGuestsConfirmation();
 
         try {
@@ -122,5 +142,19 @@ class GuestController extends Controller
         }
 
         return $em;
+    }
+
+    private function isConfirmationAllowed()
+    {
+        // Date limit for confirmation (september 1st)
+        $timeLimitDate = strtotime(date('2012-09-01 00:00:00'));
+        // Current date
+        $timeCurrentDate = strtotime(date('Y-m-d H:i:s'));
+
+        if ($timeCurrentDate >= $timeLimitDate) { // If we reach the date limit for confirmation
+            return false;
+        }
+
+        return true;
     }
 }

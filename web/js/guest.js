@@ -51,13 +51,46 @@ var guestController = (function (){
         });
     }
 
+    function _getDaysHoursMinSecFromMilliseconds(returnObj){
+        var t = _getMillisecondsTillEnd();
+
+        var cd = 24 * 60 * 60 * 1000,
+            ch = 60 * 60 * 1000,
+            cm = 60 * 1000,
+            d = Math.floor(t / cd),
+            h = '0' + Math.floor( (t - d * cd) / ch),
+            m = '0' + Math.floor( (t - d * cd - h * ch) / cm),
+            s = '0' + Math.round( (t - d * cd - h * ch - m * cm) / 1000);
+
+        if (returnObj) {
+            return {
+                days: d,
+                hours: h.substr(-2),
+                minutes: m.substr(-2),
+                seconds: s.substr(-2)
+            }
+        } else {
+            return [d, h.substr(-2), m.substr(-2), s.substr(-2)].join(':');
+        }
+    }
+
+    function _getMillisecondsTillEnd(){
+        var firstDate = new Date();
+        var secondDate = new Date("September 21, 2012 20:30:00");
+
+        var diffMillisecs = secondDate.getTime() - firstDate.getTime();
+
+        return diffMillisecs;
+    }
+
     function _init(){
         _handleMaps();
         _loadjPhotoGrid();
     }
 
     return {
-        init: _init
+        init: _init,
+        getDaysHoursMinSecs: _getDaysHoursMinSecFromMilliseconds
     };
 })();
 

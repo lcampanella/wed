@@ -18,6 +18,7 @@
     <script type="text/javascript" src="<?php echo $view['assets']->getUrl('js/lib/hoverIntent.js') ?>"></script>
     <script type="text/javascript" src="<?php echo $view['assets']->getUrl('js/lib/superfish.js') ?>"></script>
     <script type="text/javascript" src="<?php echo $view['assets']->getUrl('js/lib/jquery.preloadify.min.js') ?>"></script>
+    <script type="text/javascript" src="<?php echo $view['assets']->getUrl('js/lib/jquery.countdown.js') ?>"></script>
 
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo $view['assets']->getUrl('css/guest/carousel-slider.css') ?>" />
 
