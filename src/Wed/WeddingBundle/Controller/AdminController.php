@@ -309,4 +309,31 @@ class AdminController extends Controller
         $return = json_encode($return);
         return new \Symfony\Component\HttpFoundation\Response($return, 200, array('Content-Type'=>'application/json'));
     }
+
+    public function spoolReminderEmailsAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $users = $em->getRepository('WedWeddingBundle:User')->findAll();
+        $totalFailures = array();
+        foreach ($users as $user) {
+            $guests = $user->getGuests();
+
+            $message = \Swift_Message::newInstance();
+            $message->setSubject('Ya falta poco!!!')
+                ->setFrom(array('sole.luks@labodadelanio.com.ar' => 'Sole y Luks'))
+            //            ->setReturnPath('sole.luks@labodadelanio.com.ar')
+                ->setTo($user->getEmail())
+                ->setContentType("text/html")
+                ->setBody($this->renderView('WedWeddingBundle:Admin:emailReminderTemplate.html.php', array('user'=>$user, 'guests'=>$guests)))
+            ;
+
+            $this->get('mailer')->send($message, $failures);
+            array_push($totalFailures, $failures);
+        }
+
+        $return = array("responseCode"=>200,  "notice"=>'Los e-mails han sido guardados con &eacutexito.');
+
+        $return = json_encode($return);
+        return new \Symfony\Component\HttpFoundation\Response($return, 200, array('Content-Type'=>'application/json'));
+    }
 }

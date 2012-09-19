@@ -20,6 +20,10 @@ admin_view_confirmations:
     pattern: /admin/view/confirmations/
     defaults: { _controller: WedWeddingBundle:Admin:viewGuestsConfirmation }
 
+admin_spool_reminder_emails:
+    pattern:  /admin/spoolreminderemails/
+    defaults: { _controller: WedWeddingBundle:Admin:spoolReminderEmails }
+
 admin_spool_emails:
     pattern:  /admin/spoolemails/
     defaults: { _controller: WedWeddingBundle:Admin:spoolEmails }

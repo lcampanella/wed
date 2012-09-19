@@ -84,6 +84,24 @@ var mainController = (function (){
         });
     }
 
+    function _handleSpoolReminderEmailButton(){
+        $("#buttonSpoolEmailsRemember").click(function(e) {
+            var button = $(this);
+            button.attr('disabled', 'disabled');
+
+            var url = $(this).val();
+            $.post(url, {}, function(data, textStatus) {
+                if (textStatus == 'success') {
+                    if (data.responseCode == 200) {
+                        $('.notice-success').html(data.notice).slideDown('slow').delay(4000).slideUp('slow', function(){button.removeAttr('disabled');});
+                    } else {
+                        $('.notice-error').html(data.notice).slideDown('slow').delay(4000).slideUp('slow', function(){button.removeAttr('disabled');});
+                    }
+                }
+            });
+        });
+    }
+
     function _handleSpoolEmailForUser(){
         $(".spoolEmailForUser").click(function(e) {
             e.preventDefault();
@@ -111,6 +129,7 @@ var mainController = (function (){
         _handleCancelButtons();
         _handleSpoolEmailButton();
         _handleSpoolEmailForUser();
+        _handleSpoolReminderEmailButton();
     }
 
     return {
